@@ -1,0 +1,63 @@
+# 总控对话层。Cursor 现在充当模型；以后换成自建 API 时这张表不用改。
+# 上下文不是把仓库塞进窗口，而是按房间装配一小包工作记忆。
+# 多轮不是闲聊，是把复盘槽位问完。
+
+rooms:
+  board: {chat: false}
+  replay: {chat: true, primary: true}
+  modes: {chat: false}
+  research: {chat: true, primary: false}
+
+intents:
+  board.look:
+    room: board
+    examples: [看板, 今天环境, 情绪怎么样]
+  replay.ingest:
+    room: replay
+    examples: [收盘入库, 交割单, 按收盘闭环入库, 复盘]
+  replay.score:
+    room: replay
+    examples: [对账预测, 验昨日, 打分]
+  research.ask:
+    room: research
+    examples: [怎么样, 利好谁, 产业链, 英伟达链]
+  mode.set:
+    room: modes
+    examples: [用短线看, 切到主升, 风控官]
+  unknown:
+    room: replay
+    examples: []
+  chat.hello:
+    room: replay
+    examples: [你好, 在吗, hi]
+  chat.clarify:
+    room: replay
+    examples: []
+
+replay_slots:
+  - id: trades
+    ask: 今日交割还没进来。贴成交或说「用流水里最新一天」。
+  - id: earning_type
+    ask: 这笔买入的主赚钱类型是 E1–E7 哪一个？说不清就记违规，不帮你圆。
+  - id: fail
+    ask: 失效/止损是什么？这一类钱没了就走。
+  - id: forecast
+    ask: 对明天的预期写一句可证伪的（带窗口）。禁止「感觉还行」。
+  - id: score
+    ask: 昨日预测还待验。先对账 ✅/❌ 再写新预期。
+
+# 会话可很长。prompt_turns 才是塞进模型工作记忆的条数，不是聊天上限。
+context_budget:
+  max_history_turns: 80
+  prompt_turns: 8
+  replay:
+    - 10-我的交易/纪律_现行总表.md
+    - 10-我的交易/收盘闭环.md
+    - 最新交易日流水（接口）
+    - 预测台账待验（最多 5 条）
+  research:
+    - config/chains.yaml
+    - scripts/research_run.py 的产出
+    - 命中公司的笔记.md（若有）
+  modes:
+    - config/personas.yaml

@@ -1,0 +1,44 @@
+id: real-estate
+label: 房地产
+domain: 房地产开发与产业链
+priority: 50
+aliases: [房地产, 地产, 房地产开发, 物业, 物管, 商业地产]
+segments:
+  - id: development
+    label: 住宅开发
+    aliases: [房地产开发, 住宅, 新房, 二手房, 土地市场]
+  - id: services
+    label: 物业管理
+    aliases: [物业, 物管, 物业管理]
+  - id: commercial
+    label: 商业与运营地产
+    aliases: [商业地产, 写字楼, 购物中心, REITs]
+  - id: upstream
+    label: 地产产业链
+    aliases: [建材, 家居, 防水, 水泥, 玻璃]
+monitoring_metrics:
+  - 商品房销售额、销售面积、套数和城市能级分化
+  - 70城新房/二手房价格、去化周期和库存
+  - 土地成交、溢价率、新开工、施工和竣工
+  - 按揭利率、居民中长期贷款与开发贷融资
+  - 房企拿地、销售、回款、现金短债比和债务到期
+  - 保交楼、收储、限购限贷及预售资金政策执行
+financial_validation:
+  - 合同销售、结算收入、结算毛利率和权益比例
+  - 存货、减值、合同负债、回款率和经营现金流
+  - 有息负债、短债、融资成本和债务到期结构
+  - 拿地强度、土地储备、已售未结与竣工节奏
+source_priorities: [统计局与住建部门, 央行及金融监管, 地方政策原文, 公司公告与债券文件, 克而瑞等行业数据, 卖方预测]
+query_recipes:
+  INDUSTRY_BOUNDARY: ["{subject} 开发 销售 土地 物业 产业链 定义"]
+  TECHNOLOGY_ROUTE: ["{subject} 城市更新 保障房 收储 代建 轻资产 模式"]
+  POLICY_SUPPLY_CHAIN: ["{subject} 住建部 央行 收储 限购 按揭 保交楼 政策 原文"]
+  VALUE_MIGRATION: ["{subject} 开发商 物业 建材 家居 中介 利润池 变化"]
+  ECONOMICS: ["{subject} 销售面积 销售额 房价 库存 去化 土地 新开工"]
+  EARNINGS_TRACKING: ["{subject} 代表公司 销售 回款 结算 毛利率 减值 债务"]
+  EXPECTATIONS: ["{subject} 销售预测 房价预测 政策预期 研报 上调 下调"]
+  RISK: ["{subject} 库存 减值 流动性 债务 交付 人口 风险"]
+vendor_queries:
+  - "{subject} 销售额 销售面积 房价 库存 最新"
+  - "{subject} 收储 按揭 保交楼 政策"
+  - "{subject} 盈利预测 减值 债务 风险"

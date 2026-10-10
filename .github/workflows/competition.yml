@@ -1,0 +1,33 @@
+name: competition-checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python -m unittest tests.test_competition_package
+      - run: python -m evals.research.runner --model fixture
+      - run: python -m evals.recorder.runner --model heuristic --set gate
+      - run: python -m evals.review.runner
+      - run: python -m evals.memory.runner
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+        working-directory: web
+      - run: npm run build
+        working-directory: web
+        env:
+          NEXT_PUBLIC_API_BASE: http://localhost:8787
+          NEXT_PUBLIC_DEMO_MODE: "1"

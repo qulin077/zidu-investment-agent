@@ -1,0 +1,11 @@
+{
+  "cases": 1,
+  "critical_hallucination_count": 1,
+  "critical_hallucination_rate": 100.0,
+  "critical_field_recall": 0,
+  "unsupported_field_rate": 0,
+  "missing_detection_recall": 0,
+  "abstention_accuracy": 0,
+  "failures": [],
+  "prompt_version": "r1"
+}

@@ -1,0 +1,44 @@
+id: semiconductor-manufacturing
+label: 半导体制造（设备 / 材料）
+domain: 半导体制造
+priority: 30
+aliases: [半导体制造, 半导体设备, 半导体材料, 晶圆制造, 国产设备, 国产材料]
+segments:
+  - id: equipment
+    label: 前道、量测与封装设备
+    aliases: [半导体设备, 光刻机, 刻蚀设备, 薄膜设备, 清洗设备, 离子注入, 量测设备, 封装设备]
+  - id: materials
+    label: 半导体材料
+    aliases: [半导体材料, 光刻胶, 电子特气, 靶材, 硅片, CMP材料, 湿电子化学品, 掩膜版]
+  - id: components
+    label: 设备零部件
+    aliases: [半导体零部件, 射频电源, 真空泵, 腔体, 石英件, 陶瓷件]
+  - id: advanced-packaging
+    label: 先进封装
+    aliases: [先进封装, CoWoS, HBM, 混合键合, 玻璃基板]
+monitoring_metrics:
+  - 全球与中国晶圆厂资本开支、开工率和扩产节点
+  - 各工艺设备招标、中标、交付、验收和收入确认
+  - 国产化率、客户验证、重复订单与工艺覆盖
+  - 光刻胶、特气、靶材、硅片、CMP材料等耗用量与价格
+  - 先进制程、成熟制程和先进封装的结构变化
+  - 代表公司合同负债、存货、毛利率、研发、现金流与指引
+financial_validation:
+  - 合同负债、预收、存货和发出商品
+  - 验收周期、收入确认、毛利率和产品结构
+  - 研发费用、研发资本化与人员扩张
+  - 客户集中度、应收账款、经营现金流和资本开支
+source_priorities: [晶圆厂资本开支与招标, 公司公告及交流纪要, 海关和行业协会, 客户验证信息, 卖方预测]
+query_recipes:
+  INDUSTRY_BOUNDARY: ["{subject} 工艺环节 产品分类 产业链 晶圆制造"]
+  TECHNOLOGY_ROUTE: ["{subject} 工艺节点 客户验证 重复订单 量产 国产化"]
+  POLICY_SUPPLY_CHAIN: ["{subject} 出口管制 实体清单 国产替代 供应链 限制"]
+  VALUE_MIGRATION: ["{subject} 先进制程 成熟制程 先进封装 价值量 利润池"]
+  ECONOMICS: ["{subject} 招标 中标 交付 验收 价格 产能 利用率"]
+  EARNINGS_TRACKING: ["{subject} 代表公司 合同负债 存货 收入 毛利率 现金流"]
+  EXPECTATIONS: ["{subject} 晶圆厂 资本开支 国产化率 研报 预测 上调 下调"]
+  RISK: ["{subject} 验收延迟 下游扩产 放缓 研发 现金流 客户集中 风险"]
+vendor_queries:
+  - "{subject} 晶圆厂 资本开支 研报 预测"
+  - "{subject} 国产化 客户验证 重复订单"
+  - "{subject} 出口管制 供应链 影响"

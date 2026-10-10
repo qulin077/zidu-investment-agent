@@ -1,0 +1,301 @@
+{
+  "claims": [
+    {
+      "local_id": "C1",
+      "claim_text": "中恒电气笔记记载 2026H1 营收 12.62 亿元、同比 +41.7%。这是公司整体营收，不是 AI 电源收入。",
+      "claim_type": "FACT",
+      "subject": "中恒电气",
+      "predicate": "2026H1营收",
+      "object": "12.62亿元",
+      "unit": "",
+      "period": "2026H1",
+      "confidence": "LOW",
+      "critical": 1,
+      "metric": "",
+      "numeric_value": null,
+      "definition": "",
+      "premise_claim_ids": []
+    },
+    {
+      "local_id": "C2",
+      "claim_text": "中恒电气笔记列出的产品包括 HVDC 240/336/800V、Panama 模组和 PSU。",
+      "claim_type": "FACT",
+      "subject": "中恒电气",
+      "predicate": "产品",
+      "object": "HVDC/PSU",
+      "unit": "",
+      "period": "",
+      "confidence": "LOW",
+      "critical": 0,
+      "metric": "",
+      "numeric_value": null,
+      "definition": "",
+      "premise_claim_ids": []
+    },
+    {
+      "local_id": "C3",
+      "claim_text": "麦格米特笔记记载 2026Q1 电源收入 8.17 亿元、同比 +66.5%。笔记没有把它拆成 AI 电源。",
+      "claim_type": "FACT",
+      "subject": "麦格米特",
+      "predicate": "2026Q1电源收入",
+      "object": "8.17亿元",
+      "unit": "亿元",
+      "period": "2026Q1",
+      "confidence": "LOW",
+      "critical": 1,
+      "metric": "",
+      "numeric_value": null,
+      "definition": "",
+      "premise_claim_ids": []
+    },
+    {
+      "local_id": "C4",
+      "claim_text": "麦格米特笔记记载 2025 年营收 94.0 亿元、归母净利 1.46 亿元。",
+      "claim_type": "FACT",
+      "subject": "麦格米特",
+      "predicate": "2025年归母净利",
+      "object": "1.46亿元",
+      "unit": "",
+      "period": "2025A",
+      "confidence": "LOW",
+      "critical": 0,
+      "metric": "",
+      "numeric_value": null,
+      "definition": "",
+      "premise_claim_ids": []
+    },
+    {
+      "local_id": "C5",
+      "claim_text": "麦格米特笔记写的结构是家电 38% 加电源 29%。",
+      "claim_type": "FACT",
+      "subject": "麦格米特",
+      "predicate": "收入结构",
+      "object": "家电38%+电源29%",
+      "unit": "",
+      "period": "",
+      "confidence": "LOW",
+      "critical": 1,
+      "metric": "",
+      "numeric_value": null,
+      "definition": "",
+      "premise_claim_ids": []
+    },
+    {
+      "local_id": "C6",
+      "claim_text": "麦格米特笔记把「Rubin ~20% 数据中心算力」记为 NV 锚点。本轮没有打开 NVIDIA 电话会原文。",
+      "claim_type": "FACT",
+      "subject": "仓库笔记",
+      "predicate": "转述Rubin占比",
+      "object": "约20%数据中心算力",
+      "unit": "",
+      "period": "",
+      "confidence": "LOW",
+      "critical": 1,
+      "metric": "",
+      "numeric_value": null,
+      "definition": "",
+      "premise_claim_ids": []
+    },
+    {
+      "local_id": "C7",
+      "claim_text": "麦格米特笔记写：Rubin 18.5kW PSU/110kW 电源柜样品测试中。本轮没有打开测试原文。",
+      "claim_type": "FACT",
+      "subject": "仓库笔记",
+      "predicate": "转述样品功率",
+      "object": "18.5kW PSU",
+      "unit": "",
+      "period": "",
+      "confidence": "LOW",
+      "critical": 1,
+      "metric": "",
+      "numeric_value": null,
+      "definition": "",
+      "premise_claim_ids": []
+    },
+    {
+      "local_id": "C8",
+      "claim_text": "笔记所引多头给出麦格米特 2026–27 年电源收入 70/96 亿元。这是预测，不是已实现收入。",
+      "claim_type": "ESTIMATE",
+      "subject": "麦格米特",
+      "predicate": "电源收入预测",
+      "object": "70/96亿元",
+      "unit": "",
+      "period": "2026-27E",
+      "confidence": "LOW",
+      "critical": 0,
+      "metric": "megmeet_power_revenue_forecast",
+      "numeric_value": null,
+      "definition": "笔记所引多头对电源收入的预测区间，不是 AI 口径",
+      "premise_claim_ids": []
+    },
+    {
+      "local_id": "C9",
+      "claim_text": "笔记所引空头认为 800V 大规模或晚于 2027。",
+      "claim_type": "ESTIMATE",
+      "subject": "800V",
+      "predicate": "规模化时点",
+      "object": "晚于2027",
+      "unit": "",
+      "period": "",
+      "confidence": "LOW",
+      "critical": 0,
+      "metric": "800v_commercial_timing",
+      "numeric_value": null,
+      "definition": "笔记所引空头的时间判断",
+      "premise_claim_ids": []
+    },
+    {
+      "local_id": "C10",
+      "claim_text": "中恒电气笔记把技术路径写成 800V HVDC 2027 起规模化。",
+      "claim_type": "ESTIMATE",
+      "subject": "800V HVDC",
+      "predicate": "规模化时点",
+      "object": "2027起规模化",
+      "unit": "",
+      "period": "",
+      "confidence": "LOW",
+      "critical": 0,
+      "metric": "800v_commercial_timing",
+      "numeric_value": null,
+      "definition": "中恒笔记中的技术路径表述，不是订单",
+      "premise_claim_ids": []
+    },
+    {
+      "local_id": "C11",
+      "claim_text": "中恒电气笔记写「国内 HVDC 市占领先（与中达/维谛）」。这是判断，没有第二份独立测算。",
+      "claim_type": "OPINION",
+      "subject": "中恒电气",
+      "predicate": "市占表述",
+      "object": "领先",
+      "unit": "",
+      "period": "",
+      "confidence": "LOW",
+      "critical": 0,
+      "metric": "",
+      "numeric_value": null,
+      "definition": "",
+      "premise_claim_ids": []
+    },
+    {
+      "local_id": "C12",
+      "claim_text": "两份笔记分别写到 18.5kW 样品和 HVDC/PSU 产品线，因此更高功率供电被放进同一研究链条。笔记没有给出可核对的单柜价值量。",
+      "claim_type": "INFERENCE",
+      "subject": "AI电源",
+      "predicate": "价值量",
+      "object": "UNKNOWN",
+      "unit": "",
+      "period": "",
+      "confidence": "LOW",
+      "critical": 0,
+      "metric": "",
+      "numeric_value": null,
+      "definition": "",
+      "premise_claim_ids": [
+        "C7",
+        "C2"
+      ]
+    },
+    {
+      "local_id": "C13",
+      "claim_text": "科泰电源笔记写明柴发是 AIDC 备用电源，与 HVDC 不是同一赛道。",
+      "claim_type": "FACT",
+      "subject": "科泰电源",
+      "predicate": "赛道",
+      "object": "备用柴发，不是HVDC",
+      "unit": "",
+      "period": "",
+      "confidence": "LOW",
+      "critical": 0,
+      "metric": "",
+      "numeric_value": null,
+      "definition": "",
+      "premise_claim_ids": []
+    }
+  ],
+  "evidence": [
+    {
+      "claim_local_id": "C1",
+      "source_local_id": "S_ZH",
+      "evidence_text": "营收 **12.62 亿 +41.7%**",
+      "evidence_location": "§1.1",
+      "support_type": "SUPPORT"
+    },
+    {
+      "claim_local_id": "C2",
+      "source_local_id": "S_ZH",
+      "evidence_text": "HVDC 240/336/800V、Panama 模组、PSU",
+      "evidence_location": "§1.1",
+      "support_type": "SUPPORT"
+    },
+    {
+      "claim_local_id": "C3",
+      "source_local_id": "S_MG",
+      "evidence_text": "电源 8.17 亿 +66.5%",
+      "evidence_location": "§1.1",
+      "support_type": "SUPPORT"
+    },
+    {
+      "claim_local_id": "C4",
+      "source_local_id": "S_MG",
+      "evidence_text": "94.0 亿 / 1.46 亿",
+      "evidence_location": "§1.1",
+      "support_type": "SUPPORT"
+    },
+    {
+      "claim_local_id": "C5",
+      "source_local_id": "S_MG",
+      "evidence_text": "家电 38% + 电源 29%",
+      "evidence_location": "§1.1",
+      "support_type": "SUPPORT"
+    },
+    {
+      "claim_local_id": "C6",
+      "source_local_id": "S_MG",
+      "evidence_text": "Rubin ~20% 数据中心算力",
+      "evidence_location": "§7",
+      "support_type": "SUPPORT"
+    },
+    {
+      "claim_local_id": "C7",
+      "source_local_id": "S_MG",
+      "evidence_text": "Rubin 18.5kW PSU/110kW 电源柜样品测试中",
+      "evidence_location": "§7",
+      "support_type": "SUPPORT"
+    },
+    {
+      "claim_local_id": "C8",
+      "source_local_id": "S_BROKER",
+      "evidence_text": "电源收入 70/96 亿",
+      "evidence_location": "§1.2",
+      "support_type": "SUPPORT"
+    },
+    {
+      "claim_local_id": "C9",
+      "source_local_id": "S_BROKER",
+      "evidence_text": "800V 大规模或晚于 2027",
+      "evidence_location": "§1.2",
+      "support_type": "SUPPORT"
+    },
+    {
+      "claim_local_id": "C10",
+      "source_local_id": "S_ZH",
+      "evidence_text": "800V HVDC 2027 起规模化",
+      "evidence_location": "§0",
+      "support_type": "SUPPORT"
+    },
+    {
+      "claim_local_id": "C11",
+      "source_local_id": "S_ZH",
+      "evidence_text": "国内 HVDC 市占领先（与中达/维谛）",
+      "evidence_location": "§0",
+      "support_type": "SUPPORT"
+    },
+    {
+      "claim_local_id": "C13",
+      "source_local_id": "S_KT",
+      "evidence_text": "柴发为 AIDC 备用电源；与 HVDC 不同赛道",
+      "evidence_location": "§1",
+      "support_type": "SUPPORT"
+    }
+  ]
+}

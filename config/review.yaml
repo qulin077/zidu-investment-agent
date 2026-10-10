@@ -1,0 +1,187 @@
+# P0.0 冻结定义。代码从这里读阈值与枚举；改这个文件等于改契约，需同步改 migration。
+# 研究框架，非投资建议。
+
+version: 1
+schema_version: 1
+gate_version: "g1"
+
+# ---------------------------------------------------------------- Lifecycle
+# 状态机。不允许跳状态；DRAFT → REVIEWED 被显式禁止。
+lifecycle:
+  states:
+    DRAFT:          决策草稿。thesis 可能还没写全，没有 plan/expectation
+    PLANNED:        事前记录齐全（thesis + ≥1 expectation + ≥1 plan），等待执行
+    ACTIVE:         已有至少一笔 execution，持仓中
+    CLOSED:         净持仓归零或人工判定了结，不再有新 execution
+    REVIEW_PENDING: outcome 已由行情确定性算出，等待用户复盘
+    REVIEWED:       用户已确认 outcome / process violation / attribution，终态
+    CANCELLED:      事前记录存在但从未执行，主动放弃
+    EXPIRED:        事前记录存在但从未执行，入场窗口已过
+
+  # from: [允许到达的状态]
+  # DRAFT → ACTIVE 只给 POST_HOC（事后复盘）走，守卫会拒绝 EX_ANTE 跳过 PLANNED。
+  transitions:
+    DRAFT:          [PLANNED, CANCELLED, ACTIVE]
+    PLANNED:        [ACTIVE, CANCELLED, EXPIRED]
+    ACTIVE:         [CLOSED]
+    CLOSED:         [REVIEW_PENDING]
+    REVIEW_PENDING: [REVIEWED]
+    REVIEWED:       []
+    CANCELLED:      []
+    EXPIRED:        []
+
+  terminal: [REVIEWED, CANCELLED, EXPIRED]
+
+# ------------------------------------------------- Layer A：Process Compliance
+# 完全确定性。描述「有没有遵守自己的流程」，是事实，不是原因判断。
+# 严禁把任何一条自动映射成 Layer B 的 error type。
+process_violations:
+  NO_PLAN:
+    detail: 有 execution 但没有任何事前 plan
+    severity: high
+  UNPLANNED_EXECUTION:
+    detail: 存在 plan，但该笔 execution 被标记为计划外
+    severity: high
+  SIZE_EXCEEDED:
+    detail: 累计执行规模超过计划规模 × 容忍系数
+    severity: high
+  INVALIDATION_TRIGGERED:
+    detail: 用户标记失效条件已触发
+    severity: high
+  STOP_NOT_EXECUTED:
+    detail: 收盘价跌破 stop_price 后宽限期内没有任何减仓
+    severity: high
+  LATE_ENTRY:
+    detail: 首笔建仓晚于 plan 的入场窗口
+    severity: warn
+
+# -------------------------------------------------- Layer B：Outcome Attribution
+# 「为什么结果和预期不同」。只能由人确认，不由闸门推导，不打百分比。
+error_types:
+  NONE:              结果符合预期，或偏差在噪声范围内
+  RESEARCH_ERROR:    信息或产业判断本身错了
+  EXPECTATION_ERROR: 逻辑对，但推导成价格预期时错了
+  TIMING_ERROR:      方向对，时间窗口错
+  SIZING_ERROR:      仓位配置错误
+  EXECUTION_ERROR:   计划正确，但没按计划执行
+  RISK_CONTROL_ERROR: 失效条件已出现但没有处理
+  EMOTION_ERROR:     FOMO / 恐慌 / 追涨 / 不愿止损。只能来自用户自述
+  PROCESS_ERROR:     没做计划、没验数据、盘中临时改规则
+  EXTERNAL_SHOCK:    不可合理预见的新事件
+
+attribution_confidence: [high, medium, low]
+
+# ------------------------------------------------------------------ Provenance
+sources:
+  user:         用户本人录入
+  system:       确定性计算产出（outcome / gate / metric）
+  trade_import: 从当日交割单导入，有事前 Decision 可挂
+  legacy_import: 历史流水批量导入，无事前 Decision
+  agent:        LLM 推断（P0 不产生）
+
+# 主观字段可得性。三态，禁止混用：
+#   available    主观记录真实存在（thesis / plan 等）
+#   not_recorded 当时可以记，但用户没记
+#   unavailable  历史 legacy，已经不可能恢复；禁止 LLM 补
+subjective_context: [available, not_recorded, unavailable]
+
+# Decision 来源。origin 不是绕开分母纪律的捷径：EX_ANTE 仍要比 created_at vs 首笔 execution。
+origins: [EX_ANTE, POST_HOC]
+
+# ------------------------------------------------------------------ Recorder
+# P1.2。Extract，不是 Invent。确认前不得写 Decision。
+recorder:
+  prompt_version: r1
+  schema_version: s1
+  temperature: 0
+  remote_mode: shadow
+  remote_primary_allowed: false
+  intents: [CREATE_DECISION, UPDATE_DRAFT, CHITCHAT, UNSUPPORTED]
+  provenances: [USER_EXPLICIT, NORMALIZED_FROM_USER, SYSTEM_CONTEXT, AGENT_INFERRED]
+  draft_statuses: [PARSED, VALIDATED, NEEDS_EDIT, CONFIRMED, REJECTED, FAILED]
+  critical_fields: [symbol, thesis, expectation, entry_rule, invalidation, target_size, holding_period]
+  forbidden_inferences: [stop_price, target_price, earning_type, error_type]
+
+# P1.3。Heuristic Holdout Gate 通过后打开。Remote Recorder 仍不得升 primary。
+guided_review:
+  enabled: true
+  prompt_version: gr1
+
+# P1.4。Lesson 不自动变 Rule。Pattern 必须 human confirm。Reminder 不改计划。
+memory:
+  enabled: true
+  candidate_min: 2
+  reminder_limit: 3
+  summarizer_prompt_version: ps1
+  rule_wording_version: rw1
+
+decision_context:
+  enabled: true
+  version: c1
+  temporal_policy_version: t1
+
+pilot:
+  enabled: false
+  max_reminders_per_decision: 3
+
+features:
+  RECORDER_REMOTE_MODE: shadow
+  GUIDED_REVIEW_ENABLED: true
+  MEMORY_ENABLED: true
+  DECISION_CONTEXT_ENABLED: true
+  PILOT_MODE: false
+
+# ------------------------------------------------------------------- Expectation
+expectation:
+  statuses: [OPEN, FROZEN, EVALUATED, VOID]
+  verdicts: [PENDING, CORRECT, PARTIAL, WRONG, UNVERIFIABLE]
+  # 未经用户确认的 predicate 不允许进入 Prediction Accuracy 分母
+  require_user_confirmed_for_metrics: true
+
+# ---------------------------------------------------------------------- 阈值
+thresholds:
+  # 累计执行规模 / 计划规模 超过此倍数记 SIZE_EXCEEDED
+  size_exceeded_ratio: 1.5
+  # 收盘跌破 stop_price 后，允许的处理宽限交易日
+  stop_grace_days: 1
+  # 首笔建仓晚于入场窗口结束日多少个自然日记 LATE_ENTRY
+  late_entry_days: 1
+  # 净持仓绝对值小于此值视为已了结
+  flat_qty_epsilon: 0.000001
+
+# ---------------------------------------------------------------------- Metrics
+# 每个指标都必须显式声明分母；分母外的记录计入 excluded_n，不参与计算。
+metrics:
+  plan_adherence:
+    definition: 有事前 plan 且无 UNPLANNED_EXECUTION / SIZE_EXCEEDED / LATE_ENTRY 的 Decision 占比
+    denominator: origin=EX_ANTE 且拥有事前 plan（plan 创建早于首笔 execution）的 Decision
+    excludes: POST_HOC、无 plan 的 Decision（含全部 legacy execution）
+  execution_discipline:
+    definition: planned=yes 的 execution 占比
+    denominator: planned 明确为 yes 或 no 的 execution
+    excludes: planned=unknown（含全部 legacy execution）
+  risk_discipline:
+    definition: 失效/止损触发后按时处理的 Decision 占比
+    denominator: 出现 INVALIDATION_TRIGGERED 或 STOP_NOT_EXECUTED 判定条件的 Decision
+    excludes: 未触发过失效条件的 Decision
+  prediction_accuracy:
+    definition: verdict=CORRECT 的 expectation 占比
+    denominator: origin=EX_ANTE 且 user_confirmed=1 且 verdict 已判定的 expectation
+    excludes: POST_HOC、未确认 predicate、verdict=PENDING、verdict=UNVERIFIABLE
+  plan_completeness:
+    definition: 必填计划槽位齐全的 Decision 占比
+    denominator: origin=EX_ANTE 且状态已达 PLANNED 及以后的 Decision
+    excludes: POST_HOC、DRAFT / 无 plan 的 Decision
+  required_plan_fields: [entry_rule, invalidation]
+
+# -------------------------------------------------------------------- Research
+# 开发默认走夹具。remote_shadow 不能写正式 Thesis。primary 要等评测 Gate。
+research:
+  enabled: true
+  llm_mode: fixture
+  remote_primary_allowed: false
+  remote_enabled: false
+  max_iterations: 8
+  max_llm_calls: 20
+  max_input_tokens: 200000
+  max_output_tokens: 20000

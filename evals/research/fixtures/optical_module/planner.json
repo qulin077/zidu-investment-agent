@@ -1,0 +1,61 @@
+{
+  "research_goal": "划清光模块行业的边界、环节和暴露。这一步只列问题，不写份额和公司结论。",
+  "tasks": [
+    {
+      "id": "T1",
+      "question": "光模块行业边界包含什么、明确不包含什么？",
+      "category": "INDUSTRY_BOUNDARY",
+      "priority": 1,
+      "preferred_source_types": ["INDUSTRY_ORG"]
+    },
+    {
+      "id": "T2",
+      "question": "速率、封装或需求发生了什么结构变化？",
+      "category": "STRUCTURAL_CHANGE",
+      "priority": 1,
+      "preferred_source_types": ["OFFICIAL"]
+    },
+    {
+      "id": "T3",
+      "question": "芯片、器件、模块、设备怎么拆成环节？",
+      "category": "VALUE_CHAIN",
+      "priority": 1,
+      "preferred_source_types": ["INDUSTRY_ORG"]
+    },
+    {
+      "id": "T4",
+      "question": "变化沿环节怎么传导？哪些传导还没有证据？",
+      "category": "TRANSMISSION",
+      "priority": 2,
+      "preferred_source_types": ["COMPANY_FILING"]
+    },
+    {
+      "id": "T5",
+      "question": "量、价、成本和份额里，哪些有来源，哪些是 UNKNOWN？",
+      "category": "ECONOMICS",
+      "priority": 2,
+      "preferred_source_types": ["COMPANY_FILING"]
+    },
+    {
+      "id": "T6",
+      "question": "竞争格局里哪些是事实，哪些是卖方估计？",
+      "category": "COMPETITION",
+      "priority": 2,
+      "preferred_source_types": ["SELL_SIDE"]
+    },
+    {
+      "id": "T7",
+      "question": "哪些公司有产品证据，哪些只是主题映射？",
+      "category": "COMPANY_EXPOSURE",
+      "priority": 1,
+      "preferred_source_types": ["COMPANY_FILING"]
+    },
+    {
+      "id": "T8",
+      "question": "什么会推动或证伪当前判断？",
+      "category": "CATALYST",
+      "priority": 3,
+      "preferred_source_types": ["OFFICIAL"]
+    }
+  ]
+}

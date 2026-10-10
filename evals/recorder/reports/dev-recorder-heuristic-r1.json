@@ -1,0 +1,23 @@
+{
+  "cases": 30,
+  "critical_field_recall": 100.0,
+  "unsupported_field_rate": 0.0,
+  "critical_hallucination_rate": 0.0,
+  "critical_hallucination_count": 0,
+  "missing_detection_recall": 100.0,
+  "abstention_accuracy": 100.0,
+  "negation_error_count": 0,
+  "negation_error_rate": 0.0,
+  "correction_error_count": 0,
+  "correction_error_rate": 0.0,
+  "wrong_number_binding_count": 0,
+  "wrong_number_binding_rate": 0.0,
+  "wrong_symbol_critical_count": 0,
+  "wrong_number_critical_count": 0,
+  "failures": [],
+  "prompt_version": "r1",
+  "model": "recorder-heuristic-r1",
+  "gate_pass": true,
+  "gate_reasons": [],
+  "remote_primary_allowed": false
+}

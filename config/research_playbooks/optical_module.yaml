@@ -1,0 +1,44 @@
+id: optical-module
+label: 光模块
+domain: 光通信
+priority: 10
+aliases: [光模块, 光通信, 光器件, 硅光]
+segments:
+  - id: transceiver
+    label: 光模块整机
+    aliases: [可插拔光模块, 800G, 1.6T, 3.2T]
+  - id: optical-engine
+    label: 光引擎与共封装
+    aliases: [光引擎, NPO, CPO, ELS]
+  - id: components
+    label: 核心光电器件
+    aliases: [光芯片, EML, CW激光器, DSP, FAU, MPO]
+  - id: testing
+    label: 测试设备与测试服务
+    aliases: [光模块测试, 光通信测试, 误码仪, 示波器, 测试设备]
+monitoring_metrics:
+  - 北美云厂商资本开支及网络投入
+  - 800G/1.6T/3.2T 出货预期及上调/下调
+  - 可插拔、NPO、CPO 的送样、验证、量产与收入阶段
+  - FCC 限制范围、落地时间与美国制造/BOM 口径
+  - DSP、EML/CW 光芯片、光引擎、FAU 与测试环节的单位价值量迁移
+  - 代表公司订单、产能、ASP、良率、毛利率与指引
+financial_validation:
+  - 产品代际收入占比与 ASP
+  - 高速产品良率、产能与资本开支
+  - 客户集中度、海外收入与供应链地域
+  - 订单、交付节奏、存货和经营现金流
+source_priorities: [FCC及监管原文, 云厂商资本开支与网络指引, 公司公告与交流纪要, 行业机构, 卖方预测]
+query_recipes:
+  INDUSTRY_BOUNDARY: ["{subject} 产品分类 产业链 应用场景"]
+  TECHNOLOGY_ROUTE: ["{subject} NPO CPO 可插拔 光引擎 ELS 送样 客户验证 量产"]
+  POLICY_SUPPLY_CHAIN: ["{subject} FCC 中国 美国制造 BOM 海外产能 限制 原文"]
+  VALUE_MIGRATION: ["{subject} 光芯片 DSP 光引擎 FAU 测试 价值量 利润池"]
+  ECONOMICS: ["{subject} 800G 1.6T 3.2T 出货 ASP 产能 良率"]
+  EARNINGS_TRACKING: ["{subject} 代表公司 订单 收入 毛利率 产能 指引"]
+  EXPECTATIONS: ["{subject} 800G 1.6T 3.2T 出货量 研报 预测 上调 下调"]
+  RISK: ["{subject} 降价 延迟 过剩 替代 客户集中 政策 风险"]
+vendor_queries:
+  - "{subject} 1.6T 出货量 研报 预测 上调"
+  - "{subject} NPO CPO 可插拔 商业化"
+  - "{subject} FCC 美国制造 65% BOM"

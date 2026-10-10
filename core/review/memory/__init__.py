@@ -1,0 +1,36 @@
+"""P1.4 Mistake Memory + Rule Candidate。不是 Memory Agent。"""
+from core.review.memory.service import (
+    MemoryError,
+    activate_rule,
+    confirm_pattern,
+    confirm_rule_violation,
+    dismiss_pattern,
+    ingest_from_violations,
+    ingest_reviewed,
+    list_patterns,
+    list_rules,
+    merge_patterns,
+    pattern_detail,
+    propose_rules,
+    reject_rule,
+    retire_rule,
+    revise_rule,
+)
+
+__all__ = [
+    "MemoryError",
+    "activate_rule",
+    "confirm_pattern",
+    "confirm_rule_violation",
+    "dismiss_pattern",
+    "ingest_from_violations",
+    "ingest_reviewed",
+    "list_patterns",
+    "list_rules",
+    "merge_patterns",
+    "pattern_detail",
+    "propose_rules",
+    "reject_rule",
+    "retire_rule",
+    "revise_rule",
+]

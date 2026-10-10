@@ -1,0 +1,11 @@
+{
+  "cases": 30,
+  "pass": 30,
+  "fail": 0,
+  "failures": [],
+  "attribution_leakage": 0,
+  "emotion_inference_violation": 0,
+  "unsupported_rule": 0,
+  "premature_pattern": 0,
+  "gate_pass": true
+}

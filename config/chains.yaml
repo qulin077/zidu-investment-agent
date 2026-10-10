@@ -1,0 +1,8 @@
+# Minimal public demo mapping; not the author's private tracking universe.
+chains:
+  ai_hardware:
+    name: AI 硬件产业链（公开Demo）
+    members:
+      - code: "002384"
+        name: 东山精密
+        layer: PCB / 光通信相关业务

@@ -1,0 +1,80 @@
+{
+  "schema_version": "research-bad-case/v1",
+  "id": "ai_safety_theme_misclassified",
+  "title": "AI 安全被当成单一事件，检索跑完却无法形成投资分析",
+  "created_at": "2026-10-05",
+  "product_area": "Industry Research Agent / Event & Theme",
+  "tags": [
+    "intent-routing",
+    "human-in-the-loop",
+    "evolving-theme",
+    "adaptive-research",
+    "source-reliability",
+    "coverage-regression"
+  ],
+  "user_prompt": "你分析一下最近一直强调的 AI 安全事件，从什么时候开始，为什么，到现在怎么样了",
+  "observed_behavior": [
+    "把 AI 安全这个长期演化主题压成一件离散事件。",
+    "13 个搜索波次后只保留一篇无发布日期的二手汇总。",
+    "输出把缺口和 UNKNOWN 当成主体，没有回答定义、起源、催化与投资影响。",
+    "用户已经给出时间线、原因和现状三个维度，系统仍未正确建立研究任务。"
+  ],
+  "root_causes": [
+    "Router 缺少演化主题对象类型，主题被错误套进离散事件模板。",
+    "Planner 的覆盖合同缺少定义、起源、当前催化、主体图谱和市场叙事。",
+    "中英文官方来源的相关性与证据抽取规则不一致。",
+    "最终 claim 排序沿用公司财务启发式，丢掉已读的一手英文政策证据。",
+    "没有在研究前判断问题是否已经足够明确，也没有明确的 HIL checkpoint。"
+  ],
+  "trace_evidence": {
+    "before": [
+      {"session_id": "RY-0021", "run_id": "RR-0064", "coverage": "1/12", "result": "UNVERIFIED"},
+      {"session_id": "RY-0022", "run_id": "RR-0065", "coverage": "0/13", "result": "UNAVAILABLE"}
+    ],
+    "iterations": [
+      {"session_id": "RY-0023", "run_id": "RR-0066", "coverage": "1/13", "change": "接受中英文主题证据"},
+      {"session_id": "RY-0023", "run_id": "RR-0067", "coverage": "9/13", "change": "最终选择器保留不同证据类别"},
+      {"session_id": "RY-0023", "run_id": "RR-0068", "coverage": "10/13", "change": "按演化主题重新渲染档案"}
+    ],
+    "note": "这里只保存可审计动作与结果指标；不保存模型隐藏思维链。"
+  },
+  "expected_behavior": [
+    "先识别为 EVOLVING_THEME，而不是伪造一条 AI 安全事件。",
+    "若问题只有‘分析一下 AI 安全’，先问一个会改变研究重点的问题，并提供默认值。",
+    "若用户已经问了起源、原因、现状和影响，直接进入完整主题研究，不重复追问。",
+    "完整研究至少覆盖定义边界、起源基线、时间线、当前催化、主体行动、技术与政策分支、传导链、经济变量、受影响环节、市场叙事、预期变化、里程碑和反证。",
+    "结论区分已确认事实、市场叙事、投资映射和仍需核对的缺口。"
+  ],
+  "regression_contract": {
+    "routing": {
+      "subject": "AI安全",
+      "skill": "event-impact",
+      "object_kind": "EVOLVING_THEME"
+    },
+    "generic_prompt": "分析一下 AI 安全",
+    "generic_action": "CLARIFY",
+    "detailed_prompt": "AI 安全是什么，从什么时候开始，最近为什么升温，到现在怎么样，利好和利空哪些板块",
+    "detailed_action": "PROCEED",
+    "required_evidence": [
+      "DEFINITION_SCOPE",
+      "ORIGIN_BASELINE",
+      "TIMELINE",
+      "CURRENT_CATALYSTS",
+      "ACTOR_MAP",
+      "TECHNICAL_POLICY_TRACKS",
+      "CAUSAL_CHAIN",
+      "ECONOMIC_VARIABLES",
+      "AFFECTED_NODES",
+      "MARKET_NARRATIVE",
+      "EXPECTATION_DELTA",
+      "MILESTONES",
+      "RISK_INVALIDATION"
+    ]
+  },
+  "interview_story": {
+    "problem": "真实用户问题触发了 13 波检索，但系统仍给出 1/12 覆盖的无用回答。",
+    "diagnosis": "通过公开 Trace 发现问题不是模型单点能力，而是对象建模、覆盖合同、来源接受与最终选择四层错位。",
+    "solution": "引入演化主题模型、主题 Playbook、HIL intake、证据覆盖回归和 Trace Bad Case 资产化。",
+    "result": "同一主题从 1/12 提升到 10/13，且后续每次改动都能用该案例做确定性回归。"
+  }
+}

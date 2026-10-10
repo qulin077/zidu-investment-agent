@@ -1,0 +1,66 @@
+id: ai-safety
+label: AI 安全与治理
+canonical_name: AI安全
+search_name: AI safety
+aliases:
+  - AI安全事件
+  - AI安全
+  - AI治理
+  - AI alignment
+  - frontier AI safety
+  - 模型安全
+  - 大模型安全
+tracks:
+  - 能力增长与前沿风险
+  - 对齐、失控与欺骗行为
+  - 滥用、网络与生物安全
+  - 模型、权重与算力安全
+  - 评测、红队、监控与防护
+  - 治理、监管、责任与保险
+actors:
+  - OpenAI
+  - Anthropic
+  - Google DeepMind
+  - Meta
+  - NIST
+  - 欧盟
+  - 英国 AI Security Institute
+source_domains:
+  - openai.com
+  - anthropic.com
+  - deepmind.google
+  - nist.gov
+  - gov.uk
+  - europa.eu
+query_recipes:
+  DEFINITION_SCOPE:
+    - "{search_subject} definition alignment misuse model security governance site:nist.gov OR site:aisi.gov.uk"
+    - "{search_subject} core views safety alignment site:anthropic.com"
+  ORIGIN_BASELINE:
+    - "{search_subject} Responsible Scaling Policy 2023 site:anthropic.com"
+    - "{search_subject} Preparedness Framework site:openai.com"
+  TIMELINE:
+    - "{search_subject} Preparedness Framework updates site:openai.com"
+    - "{search_subject} Responsible Scaling Policy updates site:anthropic.com"
+  CURRENT_CATALYSTS:
+    - "{search_subject} latest safeguards alignment security incident governance site:openai.com OR site:anthropic.com"
+    - "{search_subject} latest policy incident OpenAI Anthropic Google 2026"
+  ACTOR_MAP:
+    - "{search_subject} OpenAI Anthropic Google DeepMind NIST EU positions framework"
+  TECHNICAL_POLICY_TRACKS:
+    - "{search_subject} evaluations red teaming jailbreak monitoring model weights cyber bio site:openai.com OR site:anthropic.com"
+    - "{search_subject} risk management framework site:nist.gov"
+  CAUSAL_CHAIN:
+    - "{search_subject} model capability risk safeguards compliance insurance causal impact"
+  ECONOMIC_VARIABLES:
+    - "{search_subject} security spending evaluation compute compliance cost market impact"
+  AFFECTED_NODES:
+    - "{search_subject} cybersecurity data security evaluation observability compliance insurance market impact"
+  MARKET_NARRATIVE:
+    - "{subject} 市场叙事 受益 承压 网络安全 数据安全 模型评测 合规"
+  EXPECTATION_DELTA:
+    - "{search_subject} policy expectations change OpenAI Anthropic safeguards regulation"
+  MILESTONES:
+    - "{search_subject} roadmap deadline standard effective date evaluation milestone site:openai.com OR site:anthropic.com OR site:nist.gov"
+  RISK_INVALIDATION:
+    - "{search_subject} counterargument evidence safeguards limitations regulatory rollback"

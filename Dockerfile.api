@@ -1,0 +1,22 @@
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY app ./app
+COPY core ./core
+COPY config ./config
+COPY .cursor/skills ./.cursor/skills
+COPY demo/company_index ./02-公司基本面
+COPY migrations ./migrations
+COPY demo ./demo
+COPY scripts/init_competition_demo.py ./scripts/init_competition_demo.py
+
+EXPOSE 8787
+
+CMD ["sh", "-c", "python scripts/init_competition_demo.py --db ${SA_DB_PATH:-/runtime/demo.db} && python -m uvicorn app.api.main:app --host 0.0.0.0 --port ${PORT:-8787}"]

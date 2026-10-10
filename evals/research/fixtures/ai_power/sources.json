@@ -1,0 +1,52 @@
+{
+  "sources": [
+    {
+      "local_id": "S_ZH",
+      "url": "11-节奏看板/NV产业链_中盘深度研究/液冷电源PCB/002364_中恒电气.md",
+      "title": "中恒电气研究笔记",
+      "publisher": "仓库笔记",
+      "source_type": "RESEARCH_NOTE",
+      "published_at": "2026-08-28T18:00:00+08:00",
+      "available_at": "2026-08-28T18:00:00+08:00",
+      "captured_at": "2026-09-26T23:59:59+08:00",
+      "author": "仓库研究笔记",
+      "source_quality": "SECONDARY"
+    },
+    {
+      "local_id": "S_MG",
+      "url": "11-节奏看板/NV产业链_中盘深度研究/液冷电源PCB/002851_麦格米特.md",
+      "title": "麦格米特研究笔记",
+      "publisher": "仓库笔记",
+      "source_type": "RESEARCH_NOTE",
+      "published_at": "2026-08-28T18:00:00+08:00",
+      "available_at": "2026-08-28T18:00:00+08:00",
+      "captured_at": "2026-09-26T23:59:59+08:00",
+      "author": "仓库研究笔记",
+      "source_quality": "SECONDARY"
+    },
+    {
+      "local_id": "S_BROKER",
+      "url": "11-节奏看板/NV产业链_中盘深度研究/液冷电源PCB/002851_麦格米特.md",
+      "title": "麦格米特笔记所引多头与空头摘要",
+      "publisher": "笔记转述的卖方观点",
+      "source_type": "BROKER",
+      "published_at": "2026-08-28T18:00:00+08:00",
+      "available_at": "2026-08-28T18:00:00+08:00",
+      "captured_at": "2026-09-26T23:59:59+08:00",
+      "author": "仓库研究笔记",
+      "source_quality": "SECONDARY"
+    },
+    {
+      "local_id": "S_KT",
+      "url": "11-节奏看板/NV产业链_中盘深度研究/液冷电源PCB/300153_科泰电源.md",
+      "title": "科泰电源研究笔记",
+      "publisher": "仓库笔记",
+      "source_type": "RESEARCH_NOTE",
+      "published_at": "2026-08-28T18:00:00+08:00",
+      "available_at": "2026-08-28T18:00:00+08:00",
+      "captured_at": "2026-09-26T23:59:59+08:00",
+      "author": "仓库研究笔记",
+      "source_quality": "SECONDARY"
+    }
+  ]
+}

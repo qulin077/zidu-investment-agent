@@ -1,0 +1,12 @@
+{
+  "hits": [
+    {
+      "title": "AI 数据中心供电结构",
+      "url": "evals/research/live/corpus/ai_power.html",
+      "snippet": "搜索摘要声称 HVDC 已经全面量产",
+      "provider": "seeded",
+      "query": "AI 数据中心供电",
+      "retrieved_at": "2026-09-27T10:00:00+08:00"
+    }
+  ]
+}

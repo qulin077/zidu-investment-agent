@@ -1,0 +1,59 @@
+# LEGACY COMPATIBILITY RUNTIME
+# 这份配置仍服务 core/tools.py、CLI 和 MCP，不再描述当前 /agent 主架构。
+# 新能力注册在 core/agent/skill_registry.py 与 ToolRegistry；当前说明见 CURRENT_ARCHITECTURE.md。
+
+layers:
+  skill:
+    does: 何时用、硬规则、输出形状
+    not: 自己算涨跌、自己调度专家
+  tool:
+    does: 唯一执行面。CLI / MCP / HTTP 调同一份函数
+    not: 每个脚本都暴露成 Tool
+  mcp:
+    does: Cursor 用 JSON-RPC 发现并调用 Tool
+    not: 专家名单、知识库、聊天窗口
+  harness:
+    does: research_run 内部的确定性 DAG
+    not: LangGraph、ReAct 循环、独立对话
+  react:
+    does: 看板 / 复盘（含模式） / 行研 三个房间
+    not: 第四个「Agent 控制台」房间
+
+# 白名单。日更爬虫、入库脚本不进这里。
+tools:
+  - name: dialogue_turn
+    title: 总控一轮
+    skill: conductor
+    room: "*"
+    description: 意图识别、下一槽、工作记忆。多轮对话先调这个。
+    args: [q]
+  - name: replay_get
+    title: 复盘账本
+    skill: daily-replay
+    room: replay
+    description: 当日交割、感知账待验、执行账缺口。
+    args: [date]
+  - name: research_run
+    title: 行研 Harness
+    skill: research-harness
+    room: research
+    description: 意图→收数→行业/公司/新闻→分析→风控→报告。专家不是独立 Tool。
+    args: [q]
+  - name: chain_brief
+    title: 产业链简报
+    skill: book-aware-chain
+    room: research
+    description: 已定义链条的层级、今日资金位置、账本影响。
+    args: [q]
+  - name: board_get
+    title: 看板环境
+    skill: conductor
+    room: board
+    description: 指数、VIX、情绪、新闻、池内异动、持仓。看板不聊天。
+    args: []
+  - name: personas_get
+    title: 模式透镜
+    skill: trading-modes
+    room: replay
+    description: 短线/主升/震荡/景气/风控的检查清单。不改 Gate。
+    args: []

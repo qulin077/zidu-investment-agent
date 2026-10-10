@@ -1,0 +1,34 @@
+services:
+  - type: web
+    runtime: docker
+    plan: free
+    name: zidu-thesisloop-api-ql
+    dockerfilePath: ./Dockerfile.api
+    dockerContext: .
+    healthCheckPath: /api/agent/health
+    envVars:
+      - key: SA_DB_PATH
+        value: /tmp/thesisloop-demo.db
+      - key: SA_HTTP_CACHE
+        value: /tmp/thesisloop-http-cache
+      - key: SA_CORS_ORIGINS
+        value: https://zidu-thesisloop-web-ql.onrender.com
+      - key: SA_DEMO
+        value: "1"
+      - key: RESEARCH_ENABLED
+        value: "1"
+      - key: RESEARCH_LLM_MODE
+        value: fixture
+
+  - type: web
+    runtime: docker
+    plan: free
+    name: zidu-thesisloop-web-ql
+    dockerfilePath: ./web/Dockerfile
+    dockerContext: .
+    healthCheckPath: /agent
+    envVars:
+      - key: NEXT_PUBLIC_API_BASE
+        value: https://zidu-thesisloop-api-ql.onrender.com
+      - key: NEXT_PUBLIC_DEMO_MODE
+        value: "1"

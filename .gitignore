@@ -1,0 +1,45 @@
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.pem
+credentials.json
+
+# 本地日志与调度
+data/logs/
+data/research/
+
+# 财报 PDF 体积大，本地保留，不入库
+data/raw/reports/
+**/财报/*.pdf
+
+# 工作台：派生数据与前端构建产物，均可由采集重建
+data/workstation.db
+data/workstation.db-wal
+data/workstation.db-shm
+data/cache/
+# 自动生成的研究 Trace 可能包含本地会话上下文或临时凭证；BadCase 另存于
+# evals/research/bad_cases，可安全随代码提交。
+data/diagnostics/
+web/node_modules/
+web/.next/
+web/next-env.d.ts
+web/*.tsbuildinfo
+
+# Cursor / IDE
+.cursor/
+*.canvas.tsx
+
+# 同花顺测评版由安全导出脚本生成，不纳入当前个人仓库。
+submission/ifind-ai-native/build/
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 个人对话日记只保留在本地；通用规则和匿名化样例仍可提交。
+10-我的交易/对话日记/

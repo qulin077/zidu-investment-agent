@@ -1,0 +1,74 @@
+{
+  "research_question": "半导体设备的环节怎么划？",
+  "industry_or_theme": "半导体设备",
+  "market_scope": null,
+  "as_of": "2026-09-20T23:59:59+08:00",
+  "industry_definition": "半导体设备在这份夹具里只含一个样本环节，没有份额数字。",
+  "value_chain": [
+    {
+      "node_name": "半导体设备环节",
+      "upstream_node": "",
+      "downstream_node": "",
+      "role": "结构样本",
+      "value_driver": "UNKNOWN",
+      "margin_characteristic": "UNKNOWN",
+      "bottleneck": "UNKNOWN"
+    }
+  ],
+  "key_drivers": [
+    "见 C1，没有第二来源"
+  ],
+  "technology_routes": [
+    "UNKNOWN"
+  ],
+  "market_structure": [
+    "UNKNOWN"
+  ],
+  "company_mapping": [
+    {
+      "company": "半导体设备样本公司",
+      "code": "",
+      "value_chain_node": "半导体设备环节",
+      "exposure_type": "THEMATIC",
+      "evidence_level": "NONE",
+      "revenue_exposure": "UNKNOWN",
+      "customer_evidence": "",
+      "product_evidence": "",
+      "confidence": "LOW",
+      "evidence_refs": []
+    }
+  ],
+  "catalysts": [
+    "无已核对催化"
+  ],
+  "risks": [
+    "只有结构夹具，不能外推公司受益"
+  ],
+  "conflicts": [],
+  "open_questions": [
+    "半导体设备的收入暴露 UNKNOWN"
+  ],
+  "thesis": {
+    "summary": "半导体设备这轮只有夹具原文 C1，没有公司级证据。",
+    "bull_case": "无已核对的多头事实。",
+    "base_case": "维持未知。",
+    "bear_case": "无已核对的空头事实。",
+    "key_drivers": [
+      "C1"
+    ],
+    "catalysts": [],
+    "risks": [
+      "单来源夹具"
+    ],
+    "invalidation": "夹具原文若被删除，C1 失效。",
+    "open_questions": [
+      "半导体设备的收入暴露 UNKNOWN"
+    ],
+    "evidence_refs": [
+      "C1"
+    ]
+  },
+  "evidence_refs": [
+    "C1"
+  ]
+}

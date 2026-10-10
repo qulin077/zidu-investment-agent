@@ -1,0 +1,75 @@
+{
+  "research_goal": "弄清 Rubin 放量后，AI 数据中心供电产业链会怎么变，以及 A 股公司落在哪些环节。这一步只列要核对的问题，不写结论。",
+  "tasks": [
+    {
+      "id": "T1",
+      "question": "新一代机柜功率相对上一代发生了什么变化？",
+      "category": "STRUCTURAL_CHANGE",
+      "priority": 1,
+      "preferred_source_types": ["OFFICIAL", "COMPANY_FILING"]
+    },
+    {
+      "id": "T2",
+      "question": "数据中心供电架构有哪些正在被讨论的变化？",
+      "category": "STRUCTURAL_CHANGE",
+      "priority": 1,
+      "preferred_source_types": ["OFFICIAL", "INDUSTRY_ORG"]
+    },
+    {
+      "id": "T3",
+      "question": "PSU、BBU、HVDC 等环节各自解决什么问题？",
+      "category": "VALUE_CHAIN",
+      "priority": 1,
+      "preferred_source_types": ["COMPANY_FILING", "INDUSTRY_ORG"]
+    },
+    {
+      "id": "T4",
+      "question": "每个环节的量、价、成本或份额驱动是什么？哪些仍未知？",
+      "category": "ECONOMICS",
+      "priority": 2,
+      "preferred_source_types": ["COMPANY_FILING"]
+    },
+    {
+      "id": "T5",
+      "question": "供电技术路线有哪些分歧？",
+      "category": "TRANSMISSION",
+      "priority": 2,
+      "preferred_source_types": ["OFFICIAL", "SELL_SIDE"]
+    },
+    {
+      "id": "T6",
+      "question": "这些环节里，哪些竞争表述已有来源，哪些只是观点？",
+      "category": "COMPETITION",
+      "priority": 2,
+      "preferred_source_types": ["COMPANY_FILING", "SELL_SIDE"]
+    },
+    {
+      "id": "T7",
+      "question": "A 股公司的产品分别对应哪些环节？",
+      "category": "COMPANY_EXPOSURE",
+      "priority": 1,
+      "preferred_source_types": ["COMPANY_FILING", "COMPANY_IR"]
+    },
+    {
+      "id": "T8",
+      "question": "哪些公司有客户或收入证据，哪些只有产品提及？",
+      "category": "COMPANY_EXPOSURE",
+      "priority": 1,
+      "preferred_source_types": ["COMPANY_FILING", "EARNINGS_CALL"]
+    },
+    {
+      "id": "T9",
+      "question": "什么事件会推动这些环节被重新核对？",
+      "category": "CATALYST",
+      "priority": 3,
+      "preferred_source_types": ["OFFICIAL"]
+    },
+    {
+      "id": "T10",
+      "question": "什么事实会出现，就说明当前判断不成立？",
+      "category": "RISK",
+      "priority": 3,
+      "preferred_source_types": ["COMPANY_FILING"]
+    }
+  ]
+}

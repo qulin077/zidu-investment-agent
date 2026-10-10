@@ -1,0 +1,7 @@
+# Public competition demo universe. It contains no personal watchlist.
+stocks:
+  - code: "002384"
+    name: 东山精密
+    sector: 电子制造 / PCB / 光通信
+    role: 公开演示公司
+    priority: 1

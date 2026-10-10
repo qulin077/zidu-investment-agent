@@ -1,0 +1,110 @@
+{
+  "schema_version": "research-bad-case/v1",
+  "id": "dongshan_sell_side_expectations_missing",
+  "title": "东山精密档案把有公开记录的卖方预期显示成待核对",
+  "created_at": "2026-10-06",
+  "product_area": "Company Research Agent / Expectations",
+  "tags": [
+    "sell-side",
+    "source-coverage",
+    "ifind",
+    "expectation-revision",
+    "claim-selection",
+    "silent-fallback"
+  ],
+  "user_prompt": "不止啊，花旗最新的不是给了350的预期吗，你这里来源少了好多啊",
+  "observed_behavior": [
+    "东山精密档案的公司指引、一致预期、卖方预测和市场叙事全部显示为待核对。",
+    "公开材料中存在花旗目标价和盈利预测修订，系统却没有进入预期栏。",
+    "卖方目录先打开多年以前的旧 PDF，读取失败后停止，没有优先处理近期修订。",
+    "iFinD 公司资讯分支引用未定义时间变量，异常被降级成普通来源缺口。"
+  ],
+  "root_causes": [
+    "公司来源只接了结构化财务，未把 iFinD 资讯语义检索接进卖方与催化来源通道。",
+    "卖方结果按 URL 而不是日期和预期修订信号排序，旧材料排在近期调整前面。",
+    "目标价被与产品自身投资建议混为一谈而过滤；具名机构已发布的目标价事实也无法保留。",
+    "公司 claim 的财务优先 top-N 选择会丢弃排在后面的预期、催化与风险证据。",
+    "页面没有预期修订时间线，无法表达同一机构 205→225→350 等已核对日期口径，也无法把未经证实的 282 线索单独标成未核实。"
+  ],
+  "trace_evidence": {
+    "before": [
+      {
+        "session_id": "RY-0019",
+        "run_id": "RR-0054",
+        "sell_side_candidates": 113,
+        "opened_sell_side_sources": 0,
+        "result": "卖方预测待核对"
+      },
+      {
+        "session_id": "RY-0018",
+        "result": "市场预期与催化剂页面为空"
+      }
+    ],
+    "diagnosis": [
+      "iFinD 公司新闻 Trace 返回 NameError，暴露未定义增量时间窗变量。",
+      "来源覆盖中没有成功打开的 sell-side source，现有 26 个来源均不是卖方来源。"
+    ],
+    "note": "仅保存可审计 Trace、来源统计和产品表现，不保存模型隐藏思维链。"
+  },
+  "expected_behavior": [
+    "完整公司研究并行检查财报、管理层交流、卖方预期、市场叙事和反证。",
+    "卖方通道覆盖内外资机构、目标价、评级、盈利预测与上调/下调，并优先近期修订。",
+    "数据商片段明确标成 VENDOR_EXCERPT，继续追溯原始研报，不能冒充研报全文。",
+    "产品不生成自己的目标价，但可以引用具名机构已发布的目标价事实。",
+    "同一机构的不同日期预测形成时间线，最新值与历史值明确区分；截至核对日未找到花旗改为282元的可靠记录，不得把东方证券2028年282.28亿元利润预测混成目标价。",
+    "来源失败要显示失败原因，不能把抓取失败等价为没有覆盖。"
+  ],
+  "regression_contract": {
+    "company_expectations": {
+      "name": "东山精密",
+      "ticker": "002384",
+      "required_query_tokens": ["花旗", "目标价", "上调", "下调"],
+      "target_price_evidence": "花旗将东山精密目标价从225元上调至350元。",
+      "direct_advice": "建议买入东山精密并加仓。",
+      "minimum_timeline_rows": 2,
+      "expected_latest_date": "2026-06-24",
+      "claims": [
+        {
+          "local_id": "C1",
+          "source_id": "S1",
+          "claim_type": "ESTIMATE",
+          "text": "花旗将东山精密目标价从225元上调至350元，并上调盈利预测。",
+          "estimator": "花旗"
+        },
+        {
+          "local_id": "C2",
+          "source_id": "S2",
+          "claim_type": "ESTIMATE",
+          "text": "花旗将东山精密目标价从205元上调至225元。",
+          "estimator": "花旗"
+        }
+      ],
+      "sources": [
+        {
+          "local_id": "S1",
+          "title": "花旗研报摘要",
+          "url": "https://example.com/citi-june",
+          "published_at": "2026-06-24",
+          "source_type": "DATA_VENDOR_NEWS_EXCERPT",
+          "source_skill": "sell-side-expectations",
+          "source_grade": "VENDOR_EXCERPT"
+        },
+        {
+          "local_id": "S2",
+          "title": "花旗前次估值摘要",
+          "url": "https://example.com/citi-april",
+          "published_at": "2026-04-28",
+          "source_type": "DATA_VENDOR_NEWS_EXCERPT",
+          "source_skill": "sell-side-expectations",
+          "source_grade": "VENDOR_EXCERPT"
+        }
+      ]
+    }
+  },
+  "interview_story": {
+    "problem": "系统完成了大量搜索，却把公开可见的卖方目标价和盈利预测显示为无内容。",
+    "diagnosis": "Trace 证明问题来自来源编排、静默异常、证据过滤和 top-N 选择四层，而不是一句 prompt 不够好。",
+    "solution": "新增公司 iFinD 预期通道、日期/信号排序、目标价事实边界、覆盖保留和预期修订时间线。",
+    "result": "把卖方材料从静态空字段变成可追溯的机构—日期—口径—修订序列，并建立确定性回归。"
+  }
+}

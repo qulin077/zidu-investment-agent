@@ -1,0 +1,13 @@
+.git
+.env
+.env.*
+.next
+node_modules
+__pycache__
+*.pyc
+*.db
+*.db-shm
+*.db-wal
+data
+10-我的交易
+submission/ifind-ai-native/build

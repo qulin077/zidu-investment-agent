@@ -1,0 +1,44 @@
+id: pcb-ccl
+label: PCB / 覆铜板
+domain: 电子电路
+priority: 20
+aliases: [PCB, FPC, 覆铜板, CCL, HDI, IC载板, 载板]
+segments:
+  - id: board
+    label: PCB与FPC制造
+    aliases: [PCB, FPC, HDI, 多层板, 高多层板]
+  - id: substrate
+    label: IC载板
+    aliases: [IC载板, ABF载板, BT载板, 载板]
+  - id: ccl
+    label: 覆铜板与关键材料
+    aliases: [覆铜板, CCL, 铜箔, 玻纤布, 树脂]
+  - id: equipment
+    label: PCB设备与检测
+    aliases: [PCB设备, PCB检测, AOI, 钻孔设备, 曝光设备]
+monitoring_metrics:
+  - AI服务器、交换机、汽车电子与消费电子出货
+  - 板层数、面积、线宽线距、材料等级与单机价值量
+  - 高频高速覆铜板、铜箔、玻纤布和树脂价格
+  - 扩产进度、稼动率、良率、ASP 与交期
+  - 客户认证、产品结构与海外产能
+  - 代表公司订单、收入、毛利率、存货与资本开支
+financial_validation:
+  - 分产品收入、ASP、销量与毛利率
+  - 稼动率、良率、在建工程和资本开支
+  - 原材料涨价传导与存货周期
+  - 应收账款、客户集中度与经营现金流
+source_priorities: [公司公告与交流纪要, 下游服务器及交换机厂商指引, 行业协会, 原材料价格, 卖方预测]
+query_recipes:
+  INDUSTRY_BOUNDARY: ["{subject} 产品分类 产业链 下游应用"]
+  TECHNOLOGY_ROUTE: ["{subject} 高多层 HDI IC载板 高频高速材料 客户认证 量产"]
+  POLICY_SUPPLY_CHAIN: ["{subject} 原产地 关税 海外产能 供应链 客户认证"]
+  VALUE_MIGRATION: ["{subject} 层数 面积 材料等级 单机价值量 利润池"]
+  ECONOMICS: ["{subject} 出货 ASP 稼动率 良率 铜箔 玻纤布 树脂 价格"]
+  EARNINGS_TRACKING: ["{subject} 代表公司 订单 收入 毛利率 存货 资本开支"]
+  EXPECTATIONS: ["{subject} AI服务器 交换机 出货 需求 研报 预测 上调 下调"]
+  RISK: ["{subject} 扩产 过剩 降价 原材料 客户集中 技术替代 风险"]
+vendor_queries:
+  - "{subject} AI服务器 交换机 需求 研报 预测"
+  - "{subject} 层数 材料等级 价值量 变化"
+  - "{subject} 稼动率 ASP 毛利率 扩产"

@@ -1,0 +1,186 @@
+{
+  "research_question": "Rubin 放量之后，AI 数据中心供电产业链会发生什么变化？A 股公司分别暴露在哪些环节？",
+  "industry_or_theme": "AI电源",
+  "market_scope": [
+    "A股",
+    "美股"
+  ],
+  "as_of": "2026-09-26T23:59:59+08:00",
+  "industry_definition": "本项目把 AI 电源边界定在数据中心供电、HVDC 和服务器 PSU。家电电源（C5）和备用柴发（C13）不计入同一环节的收入暴露。",
+  "value_chain": [
+    {
+      "node_name": "电网",
+      "upstream_node": "",
+      "downstream_node": "数据中心供电",
+      "role": "供电入口",
+      "value_driver": "UNKNOWN",
+      "margin_characteristic": "UNKNOWN",
+      "bottleneck": "UNKNOWN"
+    },
+    {
+      "node_name": "数据中心供电",
+      "upstream_node": "电网",
+      "downstream_node": "HVDC",
+      "role": "机房配电",
+      "value_driver": "UNKNOWN",
+      "margin_characteristic": "UNKNOWN",
+      "bottleneck": "UNKNOWN"
+    },
+    {
+      "node_name": "HVDC",
+      "upstream_node": "数据中心供电",
+      "downstream_node": "PSU",
+      "role": "直流配电",
+      "value_driver": "UNKNOWN",
+      "margin_characteristic": "UNKNOWN",
+      "bottleneck": "UNKNOWN"
+    },
+    {
+      "node_name": "PSU",
+      "upstream_node": "HVDC",
+      "downstream_node": "机柜",
+      "role": "服务器电源",
+      "value_driver": "UNKNOWN",
+      "margin_characteristic": "UNKNOWN",
+      "bottleneck": "UNKNOWN"
+    },
+    {
+      "node_name": "机柜",
+      "upstream_node": "PSU",
+      "downstream_node": "",
+      "role": "用电端",
+      "value_driver": "UNKNOWN",
+      "margin_characteristic": "UNKNOWN",
+      "bottleneck": "UNKNOWN"
+    },
+    {
+      "node_name": "备用柴发",
+      "upstream_node": "电网",
+      "downstream_node": "",
+      "role": "备用，不是 HVDC",
+      "value_driver": "UNKNOWN",
+      "margin_characteristic": "UNKNOWN",
+      "bottleneck": "UNKNOWN"
+    }
+  ],
+  "key_drivers": [
+    "笔记转述的 Rubin 渗透（C6，未回链原文）",
+    "更高功率样品是否量产（C7）",
+    "800V 时点（C9 与 C10 冲突）"
+  ],
+  "technology_routes": [
+    "笔记写当前主战场仍有 240/336V；800V 的规模化时点两条笔记不一致"
+  ],
+  "market_structure": [
+    "中恒笔记称国内 HVDC 与中达、维谛并列领先（C11）。这是单来源判断，不是份额测算。"
+  ],
+  "company_mapping": [
+    {
+      "company": "麦格米特",
+      "code": "002851",
+      "value_chain_node": "PSU",
+      "exposure_type": "INDIRECT",
+      "evidence_level": "SINGLE_SOURCE",
+      "revenue_exposure": "UNKNOWN",
+      "customer_evidence": "首个 GB300 量产订单",
+      "product_evidence": "Blackwell/Rubin PSU",
+      "confidence": "LOW",
+      "evidence_refs": [
+        "C3",
+        "C7"
+      ]
+    },
+    {
+      "company": "中恒电气",
+      "code": "002364",
+      "value_chain_node": "HVDC",
+      "exposure_type": "INDIRECT",
+      "evidence_level": "SINGLE_SOURCE",
+      "revenue_exposure": "UNKNOWN",
+      "customer_evidence": "",
+      "product_evidence": "HVDC 240/336/800V、Panama 模组、PSU",
+      "confidence": "LOW",
+      "evidence_refs": [
+        "C2"
+      ]
+    },
+    {
+      "company": "科泰电源",
+      "code": "300153",
+      "value_chain_node": "备用柴发",
+      "exposure_type": "INDIRECT",
+      "evidence_level": "SINGLE_SOURCE",
+      "revenue_exposure": "UNKNOWN",
+      "customer_evidence": "",
+      "product_evidence": "柴发为 AIDC 备用电源；与 HVDC 不同赛道",
+      "confidence": "LOW",
+      "evidence_refs": [
+        "C13"
+      ]
+    }
+  ],
+  "catalysts": [
+    "C6 若能回链到 NVIDIA 原文，才把 Rubin 渗透从笔记转述升级为事实"
+  ],
+  "risks": [
+    "C9 与 C10 对 800V 时点冲突，未裁决",
+    "麦格米特电源分部不等于 AI 收入（C3、C5）",
+    "C11 的市占没有第二来源"
+  ],
+  "conflicts": [],
+  "open_questions": [
+    "麦格米特 AI 电源收入占比 UNKNOWN。笔记只有电源分部，没有 AI 口径。",
+    "Rubin 约 20% 与 18.5kW 样品尚未回链到 NVIDIA 原文。",
+    "800V 规模化是 2027 起还是晚于 2027，两条笔记冲突，未裁决。"
+  ],
+  "thesis": {
+    "summary": "截至这一版，AI 电源链条上能核对的是笔记里的产品与分部收入，不是已证实的 Rubin 订单。麦格米特电源收入见 C3，但 AI 占比未知；中恒产品含 HVDC/PSU（C2），公司整体营收见 C1。Rubin 占比和 18.5kW 样品只是笔记转述（C6、C7）。800V 时点 C9 与 C10 冲突，保持并列。",
+    "bull_case": "若 C6、C7 以后被 NVIDIA 或公司原文证实，高功率 PSU/HVDC 的研究前提会加强。现在还没有。",
+    "base_case": "产品相关性有笔记支持，收入暴露仍是 INDIRECT，AI 收入占比 UNKNOWN。",
+    "bear_case": "若 800V 时点按 C9 推迟，或 C6/C7 与原文不符，这条传导前提减弱。",
+    "key_drivers": [
+      "C6",
+      "C7",
+      "C9",
+      "C10"
+    ],
+    "catalysts": [
+      "回链 NVIDIA 原文"
+    ],
+    "risks": [
+      "时点冲突",
+      "收入口径不是 AI"
+    ],
+    "invalidation": "NVIDIA 原文或公司公告若与 C6、C7 矛盾，则本版关于功率传导的前提失效。",
+    "open_questions": [
+      "麦格米特 AI 电源收入占比 UNKNOWN",
+      "C6 与 C7 的一手来源 UNKNOWN"
+    ],
+    "evidence_refs": [
+      "C1",
+      "C2",
+      "C3",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "C10",
+      "C12",
+      "C13"
+    ]
+  },
+  "evidence_refs": [
+    "C1",
+    "C2",
+    "C3",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "C10",
+    "C12",
+    "C13"
+  ]
+}

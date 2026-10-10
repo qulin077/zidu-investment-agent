@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "model": "fixture",
+  "cases": 32,
+  "failed": 0,
+  "gates": {
+    "fabricated_source": 0,
+    "unsupported_critical_fact": 0,
+    "wrong_evidence_link": 0,
+    "temporal_leak": 0,
+    "fact_inference_confusion": 0,
+    "direct_exposure_overclaim": 0
+  }
+}

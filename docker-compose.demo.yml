@@ -1,0 +1,35 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    environment:
+      SA_DB_PATH: /runtime/demo.db
+      SA_HTTP_CACHE: /runtime/http-cache
+      SA_CORS_ORIGINS: http://localhost:3000
+      SA_DEMO: "1"
+      RESEARCH_ENABLED: "1"
+      RESEARCH_LLM_MODE: fixture
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL:-}
+      LLM_MODEL: ${LLM_MODEL:-}
+      RESEARCH_LLM_MODEL: ${RESEARCH_LLM_MODEL:-}
+    volumes:
+      - thesisloop-demo:/runtime
+    ports:
+      - "8787:8787"
+
+  web:
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+      args:
+        NEXT_PUBLIC_API_BASE: http://localhost:8787
+        NEXT_PUBLIC_DEMO_MODE: "1"
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+
+volumes:
+  thesisloop-demo:

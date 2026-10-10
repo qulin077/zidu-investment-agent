@@ -1,0 +1,360 @@
+{
+  "fixture_version": "1.0",
+  "fixture_type": "public_demo",
+  "as_of": "2026-08-22",
+  "notice": "公开演示数据：仅用于展示产品工作流，不是实时研究结论，也不构成投资建议。数字来自已打开的公司公告；模拟成交不对应任何真实账户。",
+  "session": {
+    "id": "RY-DEMO-0001",
+    "title": "东山精密",
+    "skill": "company-research",
+    "status": "DRAFT",
+    "primary_entity_type": "company",
+    "primary_entity_name": "东山精密",
+    "primary_entity_code": "002384",
+    "primary_entity_exchange": "SZSE"
+  },
+  "summary": {
+    "options": {
+      "mode": "fixture",
+      "network": "offline",
+      "depth": "standard",
+      "as_of": "2026-08-22"
+    },
+    "formal": false,
+    "notice": "公开演示数据：仅用于展示产品工作流，不是实时研究结论，也不构成投资建议。",
+    "open_questions": [
+      "卖方预测是否出现新的上调或下调？",
+      "2026H1 的利润率改善有多少来自业务结构变化，能否持续？",
+      "资本开支扩张何时转化为稳定收入与自由现金流？"
+    ],
+    "sources": [
+      {
+        "local_id": "S1",
+        "id": "S1",
+        "number": 1,
+        "title": "东山精密：2023年年度报告",
+        "publisher": "巨潮资讯",
+        "published_at": "2024-04-18",
+        "source_type": "COMPANY_FILING",
+        "source_skill": "filing-analysis",
+        "source_label": "公司年报",
+        "evidence_role": "三年财务基线",
+        "url": "https://static.cninfo.com.cn/finalpage/2024-04-18/1219652459.PDF"
+      },
+      {
+        "local_id": "S2",
+        "id": "S2",
+        "number": 2,
+        "title": "东山精密：2024年年度报告",
+        "publisher": "巨潮资讯",
+        "published_at": "2025-04-25",
+        "source_type": "COMPANY_FILING",
+        "source_skill": "filing-analysis",
+        "source_label": "公司年报",
+        "evidence_role": "三年财务基线",
+        "url": "https://static.cninfo.com.cn/finalpage/2025-04-25/1223271985.PDF"
+      },
+      {
+        "local_id": "S3",
+        "id": "S3",
+        "number": 3,
+        "title": "东山精密：2025年年度报告",
+        "publisher": "巨潮资讯",
+        "published_at": "2026-04-22",
+        "source_type": "COMPANY_FILING",
+        "source_skill": "filing-analysis",
+        "source_label": "公司年报",
+        "evidence_role": "三年财务基线",
+        "url": "https://static.cninfo.com.cn/finalpage/2026-04-22/1225139318.PDF"
+      },
+      {
+        "local_id": "S4",
+        "id": "S4",
+        "number": 4,
+        "title": "东山精密：2026年半年度报告",
+        "publisher": "巨潮资讯",
+        "published_at": "2026-08-22",
+        "source_type": "COMPANY_FILING",
+        "source_skill": "filing-analysis",
+        "source_label": "公司半年报",
+        "evidence_role": "最新业绩验证",
+        "url": "https://static.cninfo.com.cn/finalpage/2026-08-22/1225491182.PDF"
+      },
+      {
+        "local_id": "S5",
+        "id": "S5",
+        "number": 5,
+        "title": "东山精密2026年半年报：AI需求旺盛，光模块与AI PCB双轮驱动",
+        "publisher": "上海证券研究所",
+        "published_at": "2026-09-02",
+        "source_type": "SELL_SIDE",
+        "source_skill": "sell-side-expectations",
+        "source_label": "卖方研报",
+        "evidence_role": "盈利预测与市场预期，不作为公司事实",
+        "url": "https://pdf.dfcfw.com/pdf/H3_AP202609021828932204_1.pdf"
+      },
+      {
+        "local_id": "S6",
+        "id": "S6",
+        "number": 6,
+        "title": "苏州东山精密制造股份有限公司投资者关系活动记录表",
+        "publisher": "巨潮资讯",
+        "published_at": "2026-06-03",
+        "source_type": "COMPANY_IR",
+        "source_skill": "management-communication",
+        "source_label": "管理层交流",
+        "evidence_role": "管理层解释与指引",
+        "url": "https://static.cninfo.com.cn/finalpage/2026-06-03/1225348158.PDF"
+      }
+    ],
+    "claims": [
+      {
+        "local_id": "C1",
+        "text": "公司主要从事电子电路产品、精密组件、触控显示模组和LED显示器件的研发、生产与销售。",
+        "claim_type": "FACT",
+        "source_id": "S2",
+        "evidence_text": "公司主要从事电子电路产品、精密组件、触控显示模组、LED显示器件的研发、生产和销售。"
+      },
+      {
+        "local_id": "C2",
+        "text": "2025年营业收入401.25亿元，归母净利润13.86亿元，经营现金流53.07亿元。",
+        "claim_type": "FACT",
+        "source_id": "S3",
+        "evidence_text": "营业收入40,124,858,839.52元；归母净利润1,386,066,705.56元；经营现金流5,307,141,746.99元。"
+      },
+      {
+        "local_id": "C3",
+        "text": "2026H1营业收入277.98亿元，同比增长63.95%；归母净利润29.57亿元，同比增长290.09%。",
+        "claim_type": "FACT",
+        "source_id": "S4",
+        "evidence_text": "营业收入27,797,683,972.88元，同比增长63.95%；归母净利润2,956,898,811.04元，同比增长290.09%。"
+      },
+      {
+        "local_id": "C4",
+        "text": "上海证券研究所对2026—2028年收入和利润给出上行情景预测；该内容属于卖方估计，不等于公司事实。",
+        "claim_type": "ESTIMATE",
+        "source_id": "S5",
+        "evidence_text": "研报预测口径，需和后续公告持续核对。"
+      }
+    ],
+    "company_dossier": {
+      "one_line_view": "财报显示2026H1收入和利润显著增长，但资本开支、自由现金流和利润率持续性仍需验证；市场预期必须与公司事实分层跟踪。",
+      "company_basics": {
+        "products_and_customers": [
+          {"text": "公司覆盖电子电路、精密组件、触控显示模组与LED显示器件，产品应用于消费电子、新能源汽车、通信设备、工业设备、AI与医疗器械等领域。", "source_number": 2, "claim_type": "FACT"}
+        ],
+        "segments": [
+          {"text": "公开演示仅保留年报可核对的业务分类；客户名称和未经公司确认的供应链映射不写入事实层。", "source_number": 3, "claim_type": "FACT"}
+        ],
+        "revenue_and_profit_sources": [
+          {"text": "2025年营业收入401.25亿元、归母净利润13.86亿元；2026H1收入与利润同比均明显增长。", "source_number": 4, "claim_type": "FACT"}
+        ]
+      },
+      "financial_statements": {
+        "required_years": [2025, 2024, 2023],
+        "found_years": [2025, 2024, 2023],
+        "data_years": [2025, 2024, 2023],
+        "coverage_status": "COMPLETE",
+        "coverage_note": "最近三年年报和最新半年报均来自巨潮资讯，金额按人民币元口径解析。",
+        "periodic_records": [
+          {
+            "period": "2026H1",
+            "revenue": 27797683972.88,
+            "revenue_yoy": 0.6395,
+            "gross_margin": 0.2015,
+            "operating_margin": 0.1260,
+            "net_profit_parent": 2956898811.04,
+            "operating_cash_flow": 2383887276.10,
+            "provenance": {
+              "revenue": {"source_number": 4},
+              "net_profit_parent": {"source_number": 4},
+              "operating_cash_flow": {"source_number": 4}
+            }
+          }
+        ],
+        "records": [
+          {
+            "year": 2025,
+            "revenue": 40124858839.52,
+            "revenue_yoy": 0.0912,
+            "gross_margin": 0.1409,
+            "operating_margin": 0.0316,
+            "net_profit_parent": 1386066705.56,
+            "operating_cash_flow": 5307141746.99,
+            "interest_bearing_debt": 17874857141.52,
+            "cash": 7650283509.10,
+            "current_ratio": 1.0061,
+            "receivable_days_proxy": 0.2441,
+            "inventory_to_revenue": 0.2225,
+            "debt_to_assets": 0.4722,
+            "provenance": {"revenue": {"source_number": 3}, "net_profit_parent": {"source_number": 3}, "operating_cash_flow": {"source_number": 3}}
+          },
+          {
+            "year": 2024,
+            "revenue": 36770374347.58,
+            "revenue_yoy": 0.0927,
+            "gross_margin": 0.1402,
+            "operating_margin": 0.0402,
+            "net_profit_parent": 1085641847.89,
+            "operating_cash_flow": 4986018688.48,
+            "interest_bearing_debt": 12559129323.38,
+            "cash": 7172331252.29,
+            "current_ratio": 1.1834,
+            "receivable_days_proxy": 0.2084,
+            "inventory_to_revenue": 0.1673,
+            "capex": 3792143747.46,
+            "free_cash_flow": 1193874941.02,
+            "debt_to_assets": 0.4165,
+            "provenance": {"revenue": {"source_number": 2}, "net_profit_parent": {"source_number": 2}, "operating_cash_flow": {"source_number": 2}}
+          },
+          {
+            "year": 2023,
+            "revenue": 33651205468.80,
+            "revenue_yoy": 0.0656,
+            "gross_margin": 0.1518,
+            "operating_margin": 0.0614,
+            "net_profit_parent": 1964525269.65,
+            "operating_cash_flow": 5172419470.20,
+            "interest_bearing_debt": 12359097462.12,
+            "cash": 7190036231.06,
+            "current_ratio": 1.2575,
+            "receivable_days_proxy": 0.2292,
+            "inventory_to_revenue": 0.1870,
+            "capex": 3466863364.13,
+            "free_cash_flow": 1705556106.07,
+            "debt_to_assets": 0.4023,
+            "provenance": {"revenue": {"source_number": 1}, "net_profit_parent": {"source_number": 1}, "operating_cash_flow": {"source_number": 1}}
+          }
+        ],
+        "segments": [
+          {"year": 2024, "segment": "新能源业务", "revenue_yuan": 8650000000, "revenue_share": 0.2352, "revenue_yoy": 0.3698, "source_number": 2}
+        ]
+      },
+      "financial_quality": {
+        "assessment": "2025年经营现金流高于归母净利润，但有息负债和资产负债率较2024年上升；增长质量需结合扩产兑现继续观察。",
+        "evidence": [
+          {"text": "2025年经营现金流53.07亿元，归母净利润13.86亿元。", "source_number": 3, "claim_type": "FACT"}
+        ],
+        "risk_checks": [
+          {"name": "资产负债率", "status": "WATCH", "value": 0.4722, "interpretation": "较2024年约41.6%上升。", "source_number": 3},
+          {"name": "短期偿债", "status": "WATCH", "value": 1.0061, "interpretation": "流动比率接近1倍。", "source_number": 3},
+          {"name": "利润现金含量", "status": "PASS", "value": 3.8289, "interpretation": "2025年经营现金流高于归母净利润。", "source_number": 3}
+        ]
+      },
+      "moat": {
+        "assessment": "演示数据尚不足以把规模、技术或客户关系确认为可持续壁垒。",
+        "evidence": []
+      },
+      "industry_position": {
+        "assessment": "公司横跨电子电路、精密制造与光通信相关业务；行业位置需用份额、客户认证和可比公司数据进一步核对。",
+        "evidence": []
+      },
+      "customer_supplier_exposure": [],
+      "capital_allocation": [
+        {"text": "2026H1购建固定资产、无形资产和其他长期资产支付的现金为52.53亿元；扩产后的收入与现金回报是后续验证重点。", "source_number": 4, "claim_type": "FACT"}
+      ],
+      "core_thesis": {
+        "growth_drivers": [
+          {"text": "2026H1营业收入同比增长63.95%，归母净利润同比增长290.09%，说明当期业务结构和盈利能力出现显著变化。", "source_number": 4, "claim_type": "FACT"}
+        ],
+        "profit_drivers": [
+          {"text": "2026H1毛利率约20.15%，高于2025年约14.09%；持续性需要后续季度验证。", "source_number": 4, "claim_type": "INFERENCE"}
+        ],
+        "conditions": [
+          "收入增长能继续转化为经营利润与经营现金流。",
+          "扩产带来的有息负债与资本开支不会长期压制自由现金流。",
+          "卖方高增长预测能被公司后续公告逐期验证。"
+        ]
+      },
+      "expectations": {
+        "management_guidance": [
+          {"text": "管理层交流仅作为公司解释层；公开演示不把未量化展望写成确定指引。", "source_number": 6, "claim_type": "OPINION"}
+        ],
+        "consensus": [],
+        "sell_side": [
+          {"text": "上海证券研究所对2026—2028年收入与归母净利润给出增长预测；这是卖方估计，需与后续财报逐期核对。", "source_number": 5, "claim_type": "ESTIMATE"}
+        ],
+        "market_narrative": [
+          {"text": "市场叙事集中在AI需求、光模块与AI PCB，但产品映射、收入贡献和利润兑现必须分别找证据。", "source_number": 5, "claim_type": "OPINION"}
+        ],
+        "revision_timeline": []
+      },
+      "price_and_expectations": {
+        "last_price": null,
+        "price_date": "",
+        "price_is_stale": false,
+        "price_implied_expectation": "公开Fixture不携带实时行情，部署后由行情工具补充。",
+        "expectation_gap": "已看到卖方高增长预期，但缺少实时价格与统一估值口径，暂不计算GAP。",
+        "gap_direction": "UNKNOWN",
+        "technical": {"ok": false, "message": "公开Fixture不携带历史行情；联网后再计算。"}
+      },
+      "changes": {
+        "status": "BASELINE",
+        "summary": "以2023—2025年报建立财务基线，并加入2026H1作为最新验证点；后续更新只记录新增事实和判断变化。"
+      },
+      "catalysts": [
+        {"text": "下一份定期报告将验证2026H1利润率提升和高增长是否延续。", "source_number": 4, "claim_type": "INFERENCE"}
+      ],
+      "risks_and_invalidation": {
+        "risks": [
+          {"text": "2025年资产负债率与有息负债较2024年上升，2026H1资本开支较大；扩张若不能转化为现金回报，将削弱当前逻辑。", "source_number": 4, "claim_type": "INFERENCE"}
+        ],
+        "invalidation": [
+          "后续收入仍增长，但毛利率、经营利润率或经营现金流连续恶化。",
+          "资本开支与有息负债继续增长，而产能利用率和订单兑现没有同步证据。",
+          "公司披露与卖方高增长预测连续两个报告期显著背离。"
+        ]
+      },
+      "monitoring": [
+        "季度收入、毛利率、经营利润率与经营现金流",
+        "资本开支、有息负债、流动比率与自由现金流",
+        "公司指引和卖方盈利预测的上调/下调时间线",
+        "AI相关业务从产品、验证到量产收入的证据阶段"
+      ],
+      "source_coverage": [
+        {"name": "filing-analysis", "label": "财报与公告", "evidence_role": "一手事实", "source_count": 4, "status": "completed"},
+        {"name": "management-communication", "label": "管理层交流", "evidence_role": "公司解释与指引", "source_count": 1, "status": "completed"},
+        {"name": "sell-side-expectations", "label": "卖方研报", "evidence_role": "预测与假设", "source_count": 1, "status": "completed"},
+        {"name": "market-narrative", "label": "市场叙事", "evidence_role": "争议线索", "source_count": 0, "status": "missing"},
+        {"name": "risk-disconfirmation", "label": "反方证据", "evidence_role": "风险与证伪", "source_count": 0, "status": "missing"}
+      ],
+      "sources": [
+        {"id": "S1", "number": 1, "title": "东山精密：2023年年度报告", "url": "https://static.cninfo.com.cn/finalpage/2024-04-18/1219652459.PDF", "published_at": "2024-04-18", "source_label": "公司年报", "evidence_role": "财务基线"},
+        {"id": "S2", "number": 2, "title": "东山精密：2024年年度报告", "url": "https://static.cninfo.com.cn/finalpage/2025-04-25/1223271985.PDF", "published_at": "2025-04-25", "source_label": "公司年报", "evidence_role": "财务基线"},
+        {"id": "S3", "number": 3, "title": "东山精密：2025年年度报告", "url": "https://static.cninfo.com.cn/finalpage/2026-04-22/1225139318.PDF", "published_at": "2026-04-22", "source_label": "公司年报", "evidence_role": "财务基线"},
+        {"id": "S4", "number": 4, "title": "东山精密：2026年半年度报告", "url": "https://static.cninfo.com.cn/finalpage/2026-08-22/1225491182.PDF", "published_at": "2026-08-22", "source_label": "公司半年报", "evidence_role": "最新业绩验证"},
+        {"id": "S5", "number": 5, "title": "东山精密2026年半年报：AI需求旺盛，光模块与AI PCB双轮驱动", "url": "https://pdf.dfcfw.com/pdf/H3_AP202609021828932204_1.pdf", "published_at": "2026-09-02", "source_label": "卖方研报", "evidence_role": "盈利预测"},
+        {"id": "S6", "number": 6, "title": "苏州东山精密制造股份有限公司投资者关系活动记录表", "url": "https://static.cninfo.com.cn/finalpage/2026-06-03/1225348158.PDF", "published_at": "2026-06-03", "source_label": "管理层交流", "evidence_role": "公司解释与指引"}
+      ],
+      "required_evidence": ["BUSINESS_MODEL", "FINANCIAL_TREND", "KEY_DRIVER", "EXPECTATIONS", "RISK"],
+      "research_completion": {
+        "contract_version": "company-coverage-v1",
+        "mode": "PUBLIC_DEMO_FIXTURE",
+        "status": "PARTIAL",
+        "passed": false,
+        "can_publish_as_full": false,
+        "checked_count": 17,
+        "passed_count": 13,
+        "missing_required": ["source:market-narrative", "source:risk-disconfirmation", "module:moat", "module:price_gap"],
+        "missing_labels": ["市场叙事原文", "独立反证", "可持续壁垒", "实时股价与隐含预期"],
+        "attempted_unavailable": [],
+        "attempted_unavailable_labels": [],
+        "completion_reason": "公开演示版只保留可再分发的来源与匿名数据，因此如实标记为PARTIAL。"
+      }
+    },
+    "research_completion": {
+      "contract_version": "company-coverage-v1",
+      "mode": "PUBLIC_DEMO_FIXTURE",
+      "status": "PARTIAL",
+      "passed": false,
+      "can_publish_as_full": false,
+      "checked_count": 17,
+      "passed_count": 13,
+      "missing_required": ["source:market-narrative", "source:risk-disconfirmation", "module:moat", "module:price_gap"],
+      "missing_labels": ["市场叙事原文", "独立反证", "可持续壁垒", "实时股价与隐含预期"],
+      "attempted_unavailable": [],
+      "attempted_unavailable_labels": [],
+      "completion_reason": "公开演示版只保留可再分发的来源与匿名数据，因此如实标记为PARTIAL。"
+    }
+  }
+}

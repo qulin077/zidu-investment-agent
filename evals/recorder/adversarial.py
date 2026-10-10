@@ -1,0 +1,257 @@
+"""Recorder Adversarial。覆盖否定、修正、对比、历史、假设、多数字、多标的。"""
+from __future__ import annotations
+
+ADVERSARIAL_CASES = [
+    {
+        "id": "ADV-NEG-01", "set": "adversarial", "type": "negation", "tags": ["negation", "numbers"],
+        "raw_text": "不是跌破30就卖，30只是观察位，29才算逻辑失效。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"invalidation": True},
+            "require_substrings": {"invalidation": ["29"]},
+            "must_not_bind": {"invalidation": ["跌破30"]},
+            "missing": [], "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-NEG-02", "set": "adversarial", "type": "negation", "tags": ["negation"],
+        "raw_text": "我不是说跌破30就卖，我只是拿30当观察位。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"invalidation": None},
+            "must_not_bind": {"invalidation": ["30", "跌破30"]},
+            "missing": ["invalidation"],
+            "must_not": ["stop_price", "invalidation"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-NEG-03", "set": "adversarial", "type": "negation", "tags": ["negation"],
+        "raw_text": "没说跌破31就走，那只是看一眼的位置。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"invalidation": None},
+            "must_not_bind": {"invalidation": ["31", "跌破31"]},
+            "missing": ["invalidation"],
+            "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-COR-01", "set": "adversarial", "type": "correction", "tags": ["correction"],
+        "raw_text": "刚才说上一成，算了，改成半成。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"target_size": 5},
+            "must_not_bind": {"target_size": [10]},
+            "missing": [], "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-COR-02", "set": "adversarial", "type": "correction", "tags": ["correction"],
+        "raw_text": "特变先上两成，算了改成一成，跌破30失效。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"symbol": "600089", "target_size": 10, "invalidation": True},
+            "must_not_bind": {"target_size": [20]},
+            "missing": [], "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-CST-01", "set": "adversarial", "type": "contrast", "tags": ["symbol"],
+        "raw_text": "中际不是我要买的，我主要看新易盛。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"symbol": "300502"},
+            "must_not_bind": {"symbol": ["300308", "中际旭创"]},
+            "missing": [], "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-CST-02", "set": "adversarial", "type": "contrast", "tags": ["symbol"],
+        "raw_text": "中际和新易盛都看，但只打算先做新易盛。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"symbol": "300502"},
+            "must_not_bind": {"symbol": ["300308"]},
+            "missing": [], "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-HIS-01", "set": "adversarial", "type": "historical", "tags": ["historical"],
+        "raw_text": "我上次跌破30就卖，但这次还没想好止损。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"invalidation": None},
+            "must_not_bind": {"invalidation": ["30", "跌破30"]},
+            "missing": ["invalidation"],
+            "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-HIS-02", "set": "adversarial", "type": "historical", "tags": ["historical"],
+        "raw_text": "以前中际跌破170我就走，这次还没决定做不做。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"invalidation": None},
+            "must_not_bind": {"invalidation": ["170", "跌破170"]},
+            "missing": ["invalidation"],
+            "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-HYP-01", "set": "adversarial", "type": "hypothetical", "tags": ["hypothetical"],
+        "raw_text": "如果是短线的话可能30止损，但我现在还没决定做不做。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"invalidation": None, "target_size": None},
+            "must_not_bind": {"invalidation": ["30", "30止损"]},
+            "missing": ["invalidation"],
+            "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-HYP-02", "set": "adversarial", "type": "hypothetical", "tags": ["hypothetical"],
+        "raw_text": "假如做特变，可能买一成，但我还没想好。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"target_size": None},
+            "must_not_bind": {"target_size": [10]},
+            "missing": ["target_size"],
+            "must_not": ["stop_price", "target_size"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-CND-01", "set": "adversarial", "type": "conditional", "tags": ["conditional"],
+        "raw_text": "只有低开到31附近并且科技不弱，我才考虑买。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"entry_rule": True},
+            "require_substrings": {"entry_rule": ["只有", "并且"]},
+            "missing": [], "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-CND-02", "set": "adversarial", "type": "conditional", "tags": ["conditional"],
+        "raw_text": "只有回踩不破并且成交量别缩太狠，我才买特变。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"symbol": "600089", "entry_rule": True},
+            "require_substrings": {"entry_rule": ["只有", "并且"]},
+            "missing": [], "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-NUM-01", "set": "adversarial", "type": "numbers", "tags": ["numbers"],
+        "raw_text": "现在32，31.8附近看看，30是观察位，29才算逻辑失效。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"entry_rule": True, "invalidation": True},
+            "require_substrings": {"entry_rule": ["31.8"], "invalidation": ["29"]},
+            "must_not_bind": {"invalidation": ["32", "31.8", "观察位"], "entry_rule": ["29"]},
+            "missing": [], "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-NUM-02", "set": "adversarial", "type": "numbers", "tags": ["numbers"],
+        "raw_text": "特变现在32块，31附近可以买，30观察，跌破29才失效，仓位10%。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"symbol": "600089", "entry_rule": True, "invalidation": True, "target_size": 10},
+            "require_substrings": {"invalidation": ["29"]},
+            "must_not_bind": {"invalidation": ["32", "31附近"]},
+            "missing": [], "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-SYM-01", "set": "adversarial", "type": "symbols", "tags": ["symbol"],
+        "raw_text": "中际不是我要做的，新易盛回踩不破我想买一成。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"symbol": "300502", "entry_rule": True, "target_size": 10},
+            "must_not_bind": {"symbol": ["300308"]},
+            "missing": [], "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-EMO-01", "set": "adversarial", "type": "emotion", "tags": ["emotion"],
+        "raw_text": "我今天特别怕踏空，所以一直盯着。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"invalidation": None, "target_size": None},
+            "missing": ["invalidation", "target_size"],
+            "must_not": ["stop_price", "error_type"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-EMO-02", "set": "adversarial", "type": "emotion", "tags": ["emotion"],
+        "raw_text": "盯盘盯得很烦，中际还是想看一眼。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"symbol": "300308"},
+            "must_not": ["stop_price", "error_type"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-PH-01", "set": "adversarial", "type": "posthoc", "tags": ["uncertain"],
+        "raw_text": "其实我上午买的时候应该也是因为英伟达涨了吧。",
+        "envelope": {"mode": "posthoc"},
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"thesis": None},
+            "missing": ["thesis"],
+            "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-PH-02", "set": "adversarial", "type": "posthoc", "tags": ["uncertain"],
+        "raw_text": "记不清了，大概是看回踩才买的。",
+        "envelope": {"mode": "posthoc"},
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"thesis": None},
+            "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-NEG-04", "set": "adversarial", "type": "negation", "tags": ["negation"],
+        "raw_text": "不代表跌破30就要卖，那只是观察。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"invalidation": None},
+            "must_not_bind": {"invalidation": ["30", "跌破30"]},
+            "missing": ["invalidation"],
+            "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-COR-03", "set": "adversarial", "type": "correction", "tags": ["correction"],
+        "raw_text": "新易盛刚才说上两成，改成半成，回踩不破再看。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"symbol": "300502", "target_size": 5, "entry_rule": True},
+            "must_not_bind": {"target_size": [20]},
+            "missing": [], "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-NUM-03", "set": "adversarial", "type": "numbers", "tags": ["numbers"],
+        "raw_text": "中际现在185，180附近看看，172是观察位，165才算逻辑失效。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"symbol": "300308", "entry_rule": True, "invalidation": True},
+            "require_substrings": {"invalidation": ["165"], "entry_rule": ["180"]},
+            "must_not_bind": {"invalidation": ["185", "172"]},
+            "missing": [], "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+    {
+        "id": "ADV-HYP-03", "set": "adversarial", "type": "hypothetical", "tags": ["hypothetical"],
+        "raw_text": "如果是短线可能买特变一成，但我还没决定做不做。",
+        "gold": {
+            "intent": "CREATE_DECISION",
+            "fields": {"target_size": None},
+            "must_not_bind": {"target_size": [10]},
+            "missing": ["target_size"],
+            "must_not": ["stop_price"], "abstain": False,
+        },
+    },
+]

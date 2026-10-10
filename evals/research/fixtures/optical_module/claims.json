@@ -1,0 +1,29 @@
+{
+  "claims": [
+    {
+      "local_id": "C1",
+      "claim_text": "光模块结构夹具：这里只有一句可引用的原文。",
+      "claim_type": "FACT",
+      "subject": "光模块",
+      "predicate": "夹具原文",
+      "object": "光模块结构夹具：这里只有一句可引用的原文。",
+      "unit": "",
+      "period": "",
+      "confidence": "LOW",
+      "critical": 1,
+      "metric": "",
+      "numeric_value": null,
+      "definition": "",
+      "premise_claim_ids": []
+    }
+  ],
+  "evidence": [
+    {
+      "claim_local_id": "C1",
+      "source_local_id": "S1",
+      "evidence_text": "光模块结构夹具：这里只有一句可引用的原文。",
+      "evidence_location": "L1",
+      "support_type": "SUPPORT"
+    }
+  ]
+}

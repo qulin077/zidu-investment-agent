@@ -1,0 +1,56 @@
+# Decision 一等公民。复盘发动机围绕这一行运转，不是四个并列 App。
+# 研究框架，非投资建议。
+
+version: 1
+
+# CSV / SQLite 共用字段顺序。空字符串表示未填。
+columns:
+  - id                 # D-YYYYMMDD-代码-序号，例 D-20260920-002384-01
+  - date               # 决策日（通常=买入日）
+  - code
+  - name
+  - side               # 买 / 卖 / 加仓 / 减仓
+  - thesis             # 我的判断（一句话可证伪）
+  - expectation        # 我认为会发生什么（窗口内）
+  - plan_entry         # 计划买点/条件
+  - plan_stop          # 失效 / 止损
+  - plan_size          # 计划仓位或金额
+  - planned            # 是 / 否 / 待复盘
+  - earning_type       # E1–E7
+  - invalidation       # 证伪条件（可与 plan_stop 同）
+  - holding_period     # 持有期口径
+  - market_context     # 当日环境摘要（可后补）
+  - evidence           # 证据路径或要点（可后补）
+  - trade_ids          # 关联流水 id，逗号分隔
+  - prediction_ids     # 关联预测台账 ID，逗号分隔
+  - actual_summary     # 实际做了什么
+  - outcome            # 结果摘要（盈亏/是否达预期）
+  - error_type         # 认知/时机/执行/纪律/风险/随机/空
+  - tags               # #标签 空格或逗号分隔
+  - emotion            # 1–5 或原文
+  - status             # draft / open / reviewed
+  - reviewed_at
+  - note
+
+# V0.1 买入决策必填（填不满不算 reviewed）
+required_for_reviewed:
+  - thesis
+  - expectation
+  - earning_type
+  - invalidation
+  - planned
+  - actual_summary
+  - error_type
+
+error_types:
+  认知: Thesis 错了，或证据解读错了
+  时机: 方向对，买早/买晚
+  执行: 计划对，没按计划做
+  纪律: 明知道不能做还是做了
+  风险: 方向可接受，但仓位/单笔风险过大
+  随机: 决策过程没错，结果仍亏（样本噪声）
+
+status:
+  draft: 从流水自动投影，槽位未齐
+  open: 已有计划/预期，等待结果与复盘
+  reviewed: 必填槽已齐，可进 Mistake Memory

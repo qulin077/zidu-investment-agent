@@ -1,0 +1,61 @@
+{
+  "research_goal": "划清半导体设备行业的边界、环节和暴露。这一步只列问题，不写订单和公司结论。",
+  "tasks": [
+    {
+      "id": "T1",
+      "question": "半导体设备的行业边界是什么？",
+      "category": "INDUSTRY_BOUNDARY",
+      "priority": 1,
+      "preferred_source_types": ["INDUSTRY_ORG"]
+    },
+    {
+      "id": "T2",
+      "question": "资本开支、制程或国产替代发生了什么变化？",
+      "category": "STRUCTURAL_CHANGE",
+      "priority": 1,
+      "preferred_source_types": ["OFFICIAL"]
+    },
+    {
+      "id": "T3",
+      "question": "前道、后道、零部件、服务怎么拆？",
+      "category": "VALUE_CHAIN",
+      "priority": 1,
+      "preferred_source_types": ["INDUSTRY_ORG"]
+    },
+    {
+      "id": "T4",
+      "question": "晶圆厂开支变化怎么传到设备环节？",
+      "category": "TRANSMISSION",
+      "priority": 2,
+      "preferred_source_types": ["COMPANY_FILING"]
+    },
+    {
+      "id": "T5",
+      "question": "出货、单价、毛利里哪些有披露，哪些是 UNKNOWN？",
+      "category": "ECONOMICS",
+      "priority": 2,
+      "preferred_source_types": ["COMPANY_FILING"]
+    },
+    {
+      "id": "T6",
+      "question": "竞争格局哪些有公告，哪些只是媒体映射？",
+      "category": "COMPETITION",
+      "priority": 2,
+      "preferred_source_types": ["MEDIA"]
+    },
+    {
+      "id": "T7",
+      "question": "哪些公司是直接产品暴露，哪些证据不足？",
+      "category": "COMPANY_EXPOSURE",
+      "priority": 1,
+      "preferred_source_types": ["COMPANY_FILING"]
+    },
+    {
+      "id": "T8",
+      "question": "什么订单或资本开支数据会证伪当前判断？",
+      "category": "RISK",
+      "priority": 3,
+      "preferred_source_types": ["COMPANY_FILING"]
+    }
+  ]
+}

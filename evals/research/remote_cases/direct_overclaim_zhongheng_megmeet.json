@@ -1,0 +1,20 @@
+{
+  "id": "direct_overclaim_zhongheng_megmeet",
+  "note": "2026-09-27 DeepSeek shadow 把笔记级暴露写成 DIRECT。远程门必须抓住。",
+  "claims": [
+    {
+      "local_id": "C1",
+      "claim_text": "笔记提到电源产品。",
+      "evidence_text": "笔记提到电源产品。"
+    }
+  ],
+  "thesis": {
+    "summary": "笔记提到电源产品。",
+    "evidence_refs": ["C1"],
+    "open_questions": ["客户与收入 UNKNOWN"],
+    "company_exposure": [
+      {"company": "中恒电气", "exposure_type": "DIRECT"},
+      {"company": "麦格米特", "exposure_type": "DIRECT"}
+    ]
+  }
+}

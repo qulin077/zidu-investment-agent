@@ -1,0 +1,47 @@
+id: consumer
+label: 消费
+domain: 大消费
+priority: 40
+aliases: [消费, 食品饮料, 白酒, 家电, 零售, 美妆, 旅游, 酒店, 服饰, 消费电子]
+segments:
+  - id: staples
+    label: 必选消费
+    aliases: [食品饮料, 乳制品, 调味品, 啤酒, 日用品]
+  - id: discretionary
+    label: 可选消费
+    aliases: [家电, 汽车消费, 消费电子, 家居, 服饰]
+  - id: channels
+    label: 渠道与零售
+    aliases: [零售, 电商, 商超, 免税, 经销商]
+  - id: services
+    label: 服务消费
+    aliases: [旅游, 酒店, 餐饮, 出行]
+  - id: brands
+    label: 品牌与高端消费
+    aliases: [白酒, 美妆, 奢侈品, 珠宝]
+monitoring_metrics:
+  - 社零、居民收入、消费者信心和分品类需求
+  - 终端动销、客流、客单价、复购率与同店增长
+  - 渠道库存、批价、折扣、促销与经销商回款
+  - 产品结构、提价、原材料成本和品牌投放效率
+  - 门店数、渠道结构、电商占比和区域扩张
+  - 代表公司收入、毛利率、销售费用率、现金流和指引
+financial_validation:
+  - 量价拆分、同店增长和产品结构
+  - 渠道库存、合同负债、预收和经销商回款
+  - 毛利率、销售费用率与投放效率
+  - 存货周转、应收账款和经营现金流
+source_priorities: [统计局及行业数据, 公司公告与交流纪要, 渠道与终端调研, 电商和价格数据, 卖方预测]
+query_recipes:
+  INDUSTRY_BOUNDARY: ["{subject} 品类 渠道 商业模式 市场规模"]
+  TECHNOLOGY_ROUTE: ["{subject} 产品升级 渠道变化 数字化 新品 商业化"]
+  POLICY_SUPPLY_CHAIN: ["{subject} 消费政策 税收 食品安全 原材料 供应链"]
+  VALUE_MIGRATION: ["{subject} 品牌 渠道 平台 经销商 利润池 价值量"]
+  ECONOMICS: ["{subject} 销量 价格 动销 库存 折扣 同店 客单价"]
+  EARNINGS_TRACKING: ["{subject} 代表公司 收入 毛利率 销售费用 现金流 指引"]
+  EXPECTATIONS: ["{subject} 社零 动销 盈利预测 研报 上调 下调 分歧"]
+  RISK: ["{subject} 需求疲弱 库存 价格战 渠道 费用 食品安全 风险"]
+vendor_queries:
+  - "{subject} 动销 库存 批价 研报"
+  - "{subject} 同店 客单价 渠道 变化"
+  - "{subject} 盈利预测 上调 下调"
