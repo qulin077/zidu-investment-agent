@@ -1,5 +1,7 @@
 # 自渡 ThesisLoop
 
+[![competition-checks](https://github.com/qulin077/zidu-investment-agent/actions/workflows/competition.yml/badge.svg)](https://github.com/qulin077/zidu-investment-agent/actions/workflows/competition.yml)
+
 > AI Native 个人投资研究与复盘 Agent：把分散信息变成可回查的长期判断，把交易结果变成可复用的个人经验。  
 > 研究用途，非投资建议；不输出确定性涨跌预测、收益承诺或直接买卖建议。
 
@@ -165,6 +167,7 @@ python -m unittest discover -s tests -p 'test_*.py'
 
 ## 文档
 
+- [最终提交页](docs/SUBMISSION.md)
 - [产品方案](docs/PRODUCT.md)
 - [用户研究与问题证据](docs/USER_RESEARCH.md)
 - [AI Native 与技术架构](docs/ARCHITECTURE.md)

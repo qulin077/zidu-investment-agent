@@ -34,6 +34,7 @@ AI 没有替代作者完成产品取舍：目标用户、核心闭环、禁止�
 | 5. 东山精密预期 | 市场预期为空，花旗目标价修订等线索没有进入研究；不同性质来源混在一起 | 预期研究要区分公司指引、一致预期、卖方修订和市场叙事 | 增强卖方查询配方、来源分级、目标价/盈利预测时间线和证据过滤 | `dongshan_sell_side_expectations_missing` 回归通过 |
 | 6. 研究展示 | Markdown 原样堆在页面，C 编号和 UNKNOWN 影响可读性 | 证据链应可审计，但主报告应先可读 | HTML 卡片、财务表格、Coverage、来源链接和执行 Trace；内部 Claim ID 不直接展示 | Next.js build + 页面人工检查 |
 | 7. 比赛发布 | 原仓库包含个人交易、研究笔记、行情缓存和本地数据库 | 不能直接公开个人工作仓库 | 白名单导出、匿名 Fixture、合成交易、`.dockerignore`、空环境变量 | 安全导出扫描 + Demo smoke |
+| 8. 远程 CI | 本地包级测试通过，但第一次 GitHub CI 找不到 Runtime Skills | `.cursor/skills` 被个人仓库的 IDE 忽略规则排除，说明“本机可运行”不等于“仓库可复现” | `.gitignore` 改为仅放行 6 个产品 Skill，并增加回归断言 | GitHub Actions Run 38108914351 通过 |
 
 ## 4. AI 产物如何被验证
 

@@ -151,9 +151,11 @@ NEXT_PUBLIC_DEMO_MODE=1 NEXT_PUBLIC_API_BASE=http://localhost:8787 npm run build
 
 前端依赖升级到 Next.js 16.4.0 / React 19.2.0 后重新生产构建通过，`npm audit` 结果为 0 vulnerability。
 
+公开 GitHub 仓库的 `competition-checks` 在全新 Ubuntu Runner 上重新安装依赖并运行包级测试、4 组 Eval 与 Next.js production build。首次运行暴露 `.cursor/skills` 被个人仓库 `.gitignore` 排除的问题；修复为只放行 6 个 Runtime Skills 后，2026-10-11 的远程 CI 已完成并通过：[Actions Run 38108914351](https://github.com/qulin077/zidu-investment-agent/actions/runs/38108914351)。这次失败被保留为发布可复现性 BadCase，而不是删除测试。
+
 ## 5. 尚未完成的验证
 
 - 尚未完成 3—5 名外部目标用户的可用性测试，因此不写“用户满意度”或“节省时间”结论；
 - 当前机器没有 Docker，Compose 尚未做容器级冒烟；
-- 在线 URL 部署后需再次验证 CORS、SSE、模型密钥、持久化卷和移动端布局；
+- 公开静态 Demo 已部署成功并设为公开访问；完整双服务 Runtime 的云端 CORS、SSE、模型密钥与持久化卷仍待端到端验证；
 - 远程大模型输出具有非确定性，正式上线仍需对固定案例做模型版本回归，而不能只看 fixture 成绩。
