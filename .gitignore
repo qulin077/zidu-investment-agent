@@ -31,7 +31,22 @@ web/next-env.d.ts
 web/*.tsbuildinfo
 
 # Cursor / IDE
-.cursor/
+# 仅公开产品 Runtime 依赖的 Skill；其余 Cursor 工作区状态继续忽略。
+.cursor/*
+!.cursor/skills/
+.cursor/skills/*
+!.cursor/skills/company-research/
+!.cursor/skills/company-research/**
+!.cursor/skills/industry-research/
+!.cursor/skills/industry-research/**
+!.cursor/skills/event-impact/
+!.cursor/skills/event-impact/**
+!.cursor/skills/decision-recorder/
+!.cursor/skills/decision-recorder/**
+!.cursor/skills/guided-review/
+!.cursor/skills/guided-review/**
+!.cursor/skills/memory-query/
+!.cursor/skills/memory-query/**
 *.canvas.tsx
 
 # 同花顺测评版由安全导出脚本生成，不纳入当前个人仓库。

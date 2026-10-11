@@ -40,6 +40,11 @@ class CompetitionPackageTests(unittest.TestCase):
         self.assertIn("Business Model", skills.require("company-research")["text"])
         self.assertEqual(len(skills.require("industry-research")["steps"]), 13)
 
+    def test_public_gitignore_keeps_runtime_skills(self) -> None:
+        gitignore = (ROOT / ".gitignore").read_text(encoding="utf-8")
+        self.assertIn("!.cursor/skills/company-research/**", gitignore)
+        self.assertIn("!.cursor/skills/industry-research/**", gitignore)
+
     def test_anonymous_demo_initializes_and_smokes(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             db = Path(tmp) / "demo.db"

@@ -40,17 +40,20 @@
 
 ## 2. 推荐演示路径
 
-1. `/agent`
-2. `/research?session=RY-DEMO-0001`
-3. `/review`
-4. `/review/D-20260430-002384-01`
+公开交互 Demo：<https://zidu-thesisloop.nuttyloon3.chatgpt.site>
+
+1. 首页点击“开始研究”，查看意图识别、Coverage 规划、工具取证、证据链和安全停止；
+2. 切换 Research，查看东山精密版本化档案、财务表格、覆盖缺口与原始来源；
+3. 切换 Review，对照冻结 Thesis、模拟成交和新事实，完成一次 Human in the Loop 归因确认。
+
+完整本地产品的推荐路径：`/agent` → `/research?session=RY-DEMO-0001` → `/review` → `/review/D-20260430-002384-01`。
 
 ## 3. 提交清单
 
 | 交付物 | 状态 | 位置 |
 | --- | --- | --- |
-| 可操作 Web URL | 待部署后填写 | README 顶部 / 答题系统 |
-| 源代码仓库 | 安全导出与冷启动通过，待推送 | 独立公开仓库 |
+| 可操作 Web URL | 已完成并设为公开访问 | <https://zidu-thesisloop.nuttyloon3.chatgpt.site> |
+| 源代码仓库 | 已完成，独立历史且公开 | <https://github.com/qulin077/zidu-investment-agent> |
 | README | 已完成 | `README.md` |
 | 产品方案 | 已完成 | `docs/PRODUCT.md` |
 | 用户研究与问题证据 | 已完成 | `docs/USER_RESEARCH.md` |
@@ -69,4 +72,4 @@ python scripts/competition_smoke.py --db /tmp/thesisloop-demo.db
 
 期望看到：1 个东山精密 Research 档案、6 个公开来源、1 条完整 `REVIEWED` 模拟 Decision、0 条私人数据。
 
-已在脱离个人仓库的全新目录验证上述结果；线上 URL 与仓库链接在发布完成后回填。
+已在脱离个人仓库的全新目录验证上述结果；公开交互 Demo 与源码仓库均已发布。Demo 为静态评审切片，完整的 FastAPI + Next.js Agent Runtime、测试与 Eval 在源码仓库中复现。

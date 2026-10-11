@@ -3,6 +3,11 @@
 > AI Native 个人投资研究与复盘 Agent：把分散信息变成可回查的长期判断，把交易结果变成可复用的个人经验。  
 > 研究用途，非投资建议；不输出确定性涨跌预测、收益承诺或直接买卖建议。
 
+- **公开交互 Demo**：[https://zidu-thesisloop.nuttyloon3.chatgpt.site](https://zidu-thesisloop.nuttyloon3.chatgpt.site)
+- **完整源代码**：[https://github.com/qulin077/zidu-investment-agent](https://github.com/qulin077/zidu-investment-agent)
+
+公开 Demo 是便于评委快速体验的产品切片，使用公开 Fixture 与模拟交易；本仓库保留完整 Agent Harness、Skills、Memory、Eval 与本地运行方式。
+
 ## 产品是什么
 
 自主投资者的信息、当时判断、实际执行和事后复盘通常散落在行情软件、搜索、聊天和笔记里。自渡把它们连接成一条持续工作流：
@@ -148,13 +153,7 @@ python -m unittest discover -s tests -p 'test_*.py'
 
 ## 隐私与安全导出
 
-当前个人工作仓库包含真实本地数据，不应直接公开。比赛仓库由显式白名单生成：
-
-```bash
-python scripts/build_competition_export.py /tmp/thesisloop-public
-```
-
-导出器拒绝 `.env`、数据库、缓存、个人交易目录、原始行情、私钥与本机绝对路径。部署与隐私说明见 [PRIVACY_DEPLOYMENT](docs/PRIVACY_DEPLOYMENT.md)。
+当前个人工作仓库包含真实本地数据，不应直接公开。本比赛仓库由显式白名单生成，使用独立 Git 历史；导出过程拒绝 `.env`、数据库、缓存、个人交易目录、原始行情、私钥与本机绝对路径。部署与隐私说明见 [PRIVACY_DEPLOYMENT](docs/PRIVACY_DEPLOYMENT.md)。
 
 ## 已知边界与未做事项
 
